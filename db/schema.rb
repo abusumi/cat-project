@@ -10,9 +10,70 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_29_133821) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_16_070809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string "brand"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "weight"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cats_on_user_id"
+  end
+
+  create_table "feeding_calculations", force: :cascade do |t|
+    t.bigint "cat_id", null: false
+    t.bigint "main_food_id"
+    t.bigint "sub_food_id"
+    t.decimal "main_food_amount"
+    t.decimal "sub_food_amount"
+    t.float "total_daily_calories"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cat_id"], name: "index_feeding_calculations_on_cat_id"
+    t.index ["main_food_id"], name: "index_feeding_calculations_on_main_food_id"
+    t.index ["sub_food_id"], name: "index_feeding_calculations_on_sub_food_id"
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.string "name"
+    t.decimal "calories_per_gram"
+    t.decimal "seventy"
+    t.decimal "coefficient"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_foods_on_brand_id"
+  end
+
+  create_table "helpfuls", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_helpfuls_on_review_id"
+    t.index ["user_id"], name: "index_helpfuls_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "main_food_id"
+    t.bigint "sub_food_id"
+    t.decimal "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["main_food_id"], name: "index_reviews_on_main_food_id"
+    t.index ["sub_food_id"], name: "index_reviews_on_sub_food_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +87,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_29_133821) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "cats", "users"
+  add_foreign_key "feeding_calculations", "cats"
+  add_foreign_key "feeding_calculations", "foods", column: "main_food_id"
+  add_foreign_key "feeding_calculations", "foods", column: "sub_food_id"
+  add_foreign_key "foods", "brands"
+  add_foreign_key "helpfuls", "reviews"
+  add_foreign_key "helpfuls", "users"
+  add_foreign_key "reviews", "foods", column: "main_food_id"
+  add_foreign_key "reviews", "foods", column: "sub_food_id"
+  add_foreign_key "reviews", "users"
 end
