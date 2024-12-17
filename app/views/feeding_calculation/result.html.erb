@@ -1,0 +1,14 @@
+<h2>計算結果</h2>
+
+<p>フード名: <%= @result[:food_name] %></p>
+<p>体重: <%= @result[:weight] %> kg</p>
+<p>1日の必要給与量: <%= @result[:daily_amount] %> g</p>
+<p>必要エネルギー要求量 (RER): <%= @result[:calories] %> kcal</p>
+
+<%= form_with url: save_feeding_calculation_index_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :food_id, value: @result[:food_id] %>
+  <%= f.hidden_field :weight, value: @result[:weight] %>
+  <%= f.submit "保存する" %>
+<% end %>
+
+<%= link_to "再計算する", new_feeding_calculation_path, class: "btn btn-primary" %>

@@ -1,0 +1,11 @@
+<h1>マイページ</h1>
+<h2>前回の計算結果</h2>
+
+<% if @last_calculation.present? %>
+  <p>合計カロリー: <%= @last_calculation.total_daily_calories %> kcal</p>
+  <p>メインフードの量: <%= @last_calculation.main_food_amount1 %> g</p>
+  <p>サブフードの量: <%= @last_calculation.sub_food_amount %> g</p>
+  <p>作成日時: <%= @last_calculation.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
+<% else %>
+  <p>計算結果はまだありません。</p>
+<% end %>

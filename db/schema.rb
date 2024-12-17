@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_17_053427) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_17_153159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,9 +38,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_17_053427) do
     t.float "total_daily_calories"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["cat_id"], name: "index_feeding_calculations_on_cat_id"
     t.index ["main_food_id"], name: "index_feeding_calculations_on_main_food_id"
     t.index ["sub_food_id"], name: "index_feeding_calculations_on_sub_food_id"
+    t.index ["user_id"], name: "index_feeding_calculations_on_user_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -93,6 +95,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_17_053427) do
   add_foreign_key "feeding_calculations", "cats"
   add_foreign_key "feeding_calculations", "foods", column: "main_food_id"
   add_foreign_key "feeding_calculations", "foods", column: "sub_food_id"
+  add_foreign_key "feeding_calculations", "users"
   add_foreign_key "foods", "brands"
   add_foreign_key "helpfuls", "reviews"
   add_foreign_key "helpfuls", "users"
