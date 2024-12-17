@@ -1,2 +1,2 @@
-class BrandController < ApplicationController
+class BrandsController < ApplicationController
 end
