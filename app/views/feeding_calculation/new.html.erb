@@ -1,0 +1,14 @@
+<h2>1日の給与量を計算する</h2>
+<%= form_with url: calculate_feeding_calculation_index_path, method: :post, local: true, data: { turbo: false } do |form| %>
+  <div>
+    <%= form.label :food_id, "フードを選択" %>
+    <%= form.collection_select :food_id, @foods, :id, :name %>
+  </div>
+
+  <div>
+    <%= form.label :weight, "体重 (kg)" %>
+    <%= form.text_field :weight, value: nil, placeholder: "例: 4.8", required: true %>
+  </div>
+
+  <%= form.submit "計算する" %>
+<% end %>

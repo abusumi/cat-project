@@ -1,0 +1,7 @@
+<h2>計算結果</h2>
+
+<p>選択したフード: <%= @food.name %> (<%= @food.brand %>)</p>
+<p>1日の給与量: <%= @calculation.calculated_amount1.round(2) %> g</p>
+<p>1日の必要エネルギー量: <%= @calculation.total_daily_calories.round(2) %> kcal</p>
+
+<%= link_to "新しい計算をする", new_feeding_calculation_path, class: "btn btn-secondary" %>

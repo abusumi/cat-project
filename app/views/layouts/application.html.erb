@@ -20,8 +20,10 @@
   <body class="flex flex-col min-h-screen">
     <% if user_signed_in? %>
       <%= render 'shared/after_login_header' %>
+      <%= render 'devise/shared/flash_messages' %>
     <% else %>
       <%= render 'shared/before_login_header' %>
+      <%= render 'devise/shared/flash_messages' %>
     <% end %>
       <%# render 'shared/flash' %>
     <div class="flex-grow bg-yellow-50">

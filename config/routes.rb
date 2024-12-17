@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  resources :users, only: [ :show ]
+
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,7 +14,14 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
+  resources :feeding_calculation, only: [ :new ] do
+    collection do
+      post :calculate # 計算を行う
+      post :save      # 結果を保存 (ログインユーザーのみ)
+    end
+  end
+
   # Defines the root path route ("/")
   # root "posts#index"
-  root "home#index"
+  root "feeding_calculation#new"
 end

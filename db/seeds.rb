@@ -7,3 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "csv"
+# brands.csvを読み込んでbrandsテーブルにデータを追加
+# brands.csvを読み込んでbrandsテーブルにデータを追加
+CSV.foreach('db/brands.csv', headers: true) do |row|
+  Brand.find_or_create_by(brand: row['brand'])
+end
+
+# foods.csvを読み込んでfoodsテーブルにデータを追加
+CSV.foreach('db/foods.csv', headers: true) do |row|
+  Food.find_or_create_by(name: row['name']) do |food| # nameを使って重複をチェック
+    food.brand_id = row['brand_id']
+    food.calories_per_gram = row['calories_per_gram']
+    food.seventy = row['seventy']
+    food.coefficient = row['coefficient']
+  end
+end
