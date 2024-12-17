@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<h2><%= t('.title') %></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -7,8 +7,15 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> <%= t('.characters_minimum') %>)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", id: "password_field" %>
+    <div>
+      <%= check_box_tag 'show_password', '1', false, onclick: 'togglePasswordVisibility()' %>
+      <%= label_tag 'show_password', t('devise.registrations.new.show_password') %>
+    </div>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -19,8 +26,28 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit t('.sign_in') %>
   </div>
 <% end %>
+
+<script>
+function togglePasswordVisibility() {
+  const passwordField = document.getElementById("password_field");
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+  } else {
+    passwordField.type = "password";
+  }
+}
+
+function togglePasswordConfirmationVisibility() {
+  const passwordConfirmationField = document.getElementById("password_confirmation_field");
+  if (passwordConfirmationField.type === "password") {
+    passwordConfirmationField.type = "text";
+  } else {
+    passwordConfirmationField.type = "password";
+  }
+}
+</script>
 
 <%= render "devise/shared/links" %>
