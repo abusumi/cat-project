@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     collection do
       post :calculate # 計算を行う
       post :save      # 結果を保存 (ログインユーザーのみ)
+      get :calculate
     end
   end
 

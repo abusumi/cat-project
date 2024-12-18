@@ -6,6 +6,9 @@ class FeedingCalculationController < ApplicationController
   end
 
   def calculate
+    if params[:food_id].nil?
+      redirect_to root_path and return
+    end
     # フードと体重の取得
     food = Food.find(params[:food_id])
     weight = params[:weight].to_f
@@ -28,7 +31,6 @@ class FeedingCalculationController < ApplicationController
     @result[:food_name] = food.name  # foodの名前を追加
 
     render :result
-    # redirect_to result_feeding_calculation_index_path
   end
 
   def save
