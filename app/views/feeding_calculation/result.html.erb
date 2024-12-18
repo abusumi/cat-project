@@ -1,14 +1,21 @@
-<h2>計算結果</h2>
+<h2 class="text-center mb-6 text-2xl" >計算結果</h2>
+<div class="flex justify-center mb-12">
+  <div class="text-left space-y-4">
+    <p class="text-xl mb-6 ">フード名: <strong><%= @result[:food_name] %></strong></p>
+    <p class="text-xl mb-6 ">体重: <strong><%= @result[:weight] %></strong> kg</p>
+    <p class="text-xl mb-6 ">1日の必要給与量: <strong><%= @result[:daily_amount] %></strong> g</p>
+    <p class="text-xl mb-6 ">必要エネルギー要求量 (RER): <strong><%= @result[:calories] %></strong> kcal</p>
+  </div>
+</div>
+  
+<div class="flex justify-center">
+  <div class="text-xl mb-6">
+    <%= form_with url: save_feeding_calculation_index_path, method: :post, local: true do |f| %>
+      <%= f.hidden_field :food_id, value: @result[:food_id] %>
+      <%= f.hidden_field :weight, value: @result[:weight] %>
+      <button type="submit" class="btn btn-wide text-xl bg-pink-200 text-orange-700 hover:bg-pink-100">マイページに保存する</button>
+    <% end %>
+  </div>
 
-<p>フード名: <%= @result[:food_name] %></p>
-<p>体重: <%= @result[:weight] %> kg</p>
-<p>1日の必要給与量: <%= @result[:daily_amount] %> g</p>
-<p>必要エネルギー要求量 (RER): <%= @result[:calories] %> kcal</p>
-
-<%= form_with url: save_feeding_calculation_index_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :food_id, value: @result[:food_id] %>
-  <%= f.hidden_field :weight, value: @result[:weight] %>
-  <%= f.submit "保存する" %>
-<% end %>
-
-<%= link_to "再計算する", new_feeding_calculation_path, class: "btn btn-primary" %>
+  <%= link_to "再計算する", new_feeding_calculation_path, class: "btn btn-wide text-xl bg-emerald-200 text-orange-700 hover:bg-emerald-100" %>
+</div>

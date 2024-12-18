@@ -1,14 +1,17 @@
-<h2>1日の給与量を計算する</h2>
-<%= form_with url: calculate_feeding_calculation_index_path, method: :post, local: true, data: { turbo: false } do |form| %>
-  <div>
-    <%= form.label :food_id, "フードを選択" %>
-    <%= form.collection_select :food_id, @foods, :id, :name %>
-  </div>
+<h2 class="text-center mb-6 text-2xl" >1日の給与量を計算する</h2>
+<div class="flex justify-center">
+  <%= form_with url: calculate_feeding_calculation_index_path, method: :post, local: true, data: { turbo: false } do |form| %>
+    <div class="text-xl mb-6">
+      <%= form.label :food_id, "フードを選択" %>
+      <%= form.collection_select :food_id, @foods, :id, :name %>
+    </div>
 
-  <div>
-    <%= form.label :weight, "体重 (kg)" %>
-    <%= form.text_field :weight, value: nil, placeholder: "例: 4.8", required: true %>
-  </div>
+    <div class="text-xl mb-6 flex items-center">
+      <%= form.label :weight, "体重" %>
+      <%= form.text_field :weight, value: nil, placeholder: "例: 4.8", required: true, class: "ml-2" %>
+      <span class="ml-2">kg</span>
+    </div>
 
-  <%= form.submit "計算する" %>
-<% end %>
+    <button type="submit" class="btn btn-wide text-xl bg-pink-200 text-orange-700 hover:bg-pink-100">計算する</button>
+  <% end %>
+</div>

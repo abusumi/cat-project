@@ -1,13 +1,17 @@
-<h1>マイページ</h1>
-<h2>前回の計算結果</h2>
+<div class="flex flex-col items-center">
+  <h1 class="text-2xl font-bold mb-4">マイページ</h1>
+  <h2 class="text-xl mb-2">前回の計算結果</h2>
 
-<% if @last_calculation.present? %>
-  <p>前回選択したフード: <%= @last_calculation.main_food.name %> </p>
-  <p>体重: <%= @last_calculation.cat.weight %> kg</p>
-  <p>合計カロリー: <%= @last_calculation.total_daily_calories %> kcal</p>
-  <p>メインフードの量: <%= @last_calculation.main_food_amount %> g</p>
-  <p>サブフードの量: <%= @last_calculation.sub_food_amount %> g</p>
-  <p>作成日時: <%= @last_calculation.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
-<% else %>
-  <p>計算結果はまだありません。</p>
-<% end %>
+  <% if @last_calculation.present? %>
+    <div class="bg-white shadow-md rounded-lg p-5 flex flex-col items-center">
+      <p class="text-lg">前回選択したフード: <span class="font-semibold"><%= @last_calculation.main_food.name %></span></p>
+      <p class="text-lg">体重: <span class="font-semibold"><%= @last_calculation.cat.weight %></span> kg</p>
+      <p class="text-lg">合計カロリー: <span class="font-semibold"><%= @last_calculation.total_daily_calories %></span> kcal</p>
+      <p class="text-lg">メインフードの量: <span class="font-semibold"><%= @last_calculation.main_food_amount %></span> g</p>
+      <p class="text-lg">サブフードの量: <span class="font-semibold"><%= @last_calculation.sub_food_amount %></span> g</p>
+      <p class="text-sm text-gray-500">作成日時: <%= @last_calculation.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
+    </div>
+  <% else %>
+    <p class="text-red-500 mt-4">計算結果はまだありません。</p>
+  <% end %>
+</div>

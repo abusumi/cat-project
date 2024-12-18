@@ -28,6 +28,7 @@ class FeedingCalculationController < ApplicationController
     @result[:food_name] = food.name  # foodの名前を追加
 
     render :result
+    # redirect_to result_feeding_calculation_index_path
   end
 
   def save
