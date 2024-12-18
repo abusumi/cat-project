@@ -62,7 +62,7 @@ class FeedingCalculationController < ApplicationController
       total_daily_calories: rer.round(2)
     )
 
-    flash.now[:notice] = "給与量の計算結果を保存しました！"
+    flash[:notice] = "給与量の計算結果を保存しました！"
     redirect_to user_path(current_user.id)
   end
 end
