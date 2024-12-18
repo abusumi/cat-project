@@ -2,6 +2,8 @@
 <h2>前回の計算結果</h2>
 
 <% if @last_calculation.present? %>
+  <p>前回選択したフード: <%= @last_calculation.main_food.name %> </p>
+  <p>体重: <%= @last_calculation.cat.weight %> kg</p>
   <p>合計カロリー: <%= @last_calculation.total_daily_calories %> kcal</p>
   <p>メインフードの量: <%= @last_calculation.main_food_amount %> g</p>
   <p>サブフードの量: <%= @last_calculation.sub_food_amount %> g</p>

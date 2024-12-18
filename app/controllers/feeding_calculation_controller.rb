@@ -55,6 +55,8 @@ class FeedingCalculationController < ApplicationController
     FeedingCalculation.create!(
       user: current_user,
       cat: cat,
+      main_food_id: food.name,
+      cat_id: cat.id,
       main_food_id: food.id,
       main_food_amount: daily_amount,
       total_daily_calories: rer.round(2)
