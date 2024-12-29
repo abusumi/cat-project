@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :brands, only: [ :index ]
+
   # Defines the root path route ("/")
   # root "posts#index"
   root "feeding_calculation#new"
