@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brands, only: [ :index ]
+  resources :brands, only: [ :index, :show ]
 
   # Defines the root path route ("/")
   # root "posts#index"
