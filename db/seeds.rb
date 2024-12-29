@@ -11,7 +11,7 @@ require "csv"
 # brands.csvを読み込んでbrandsテーブルにデータを追加
 # brands.csvを読み込んでbrandsテーブルにデータを追加
 CSV.foreach('db/brands.csv', headers: true) do |row|
-  Brand.find_or_create_by(brand: row['brand'])
+  Brand.find_or_create_by(name: row['brand'])
 end
 
 # foods.csvを読み込んでfoodsテーブルにデータを追加
