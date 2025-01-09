@@ -22,8 +22,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :brands, only: [ :index, :show ]
-
+  resources :brands, only: [ :index, :show ] do
+    member do
+      get :foods # /brands/:id/foods に対応
+    end
+  end
   # Defines the root path route ("/")
   # root "posts#index"
   root "feeding_calculation#new"

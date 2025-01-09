@@ -1,9 +1,14 @@
-<h2 class="text-center mb-6 text-2xl" >1日の給与量を計算する</h2>
+<h2 class="text-center mb-6 text-2xl">1日の給与量を計算する</h2>
 <div class="flex justify-center">
   <%= form_with url: calculate_feeding_calculation_index_path, method: :post, local: true, data: { turbo: false } do |form| %>
     <div class="text-xl mb-6">
+      <%= form.label :brand_id, "メーカーを選択" %>
+      <%= select_tag :brand_id, options_from_collection_for_select(Brand.all, :id, :name), prompt: "メーカーを選択", id: "brand_select" %>
+    </div>
+
+    <div class="text-xl mb-6">
       <%= form.label :food_id, "フードを選択" %>
-      <%= form.collection_select :food_id, @foods, :id, :name %>
+      <%= select_tag :food_id, "", prompt: "フードを選択", id: "food_select", name: "food_id" %>
     </div>
 
     <div class="text-xl mb-6 flex items-center">
