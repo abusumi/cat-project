@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_08_081253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.bigint "brand_id", null: false
+    t.bigint "brand_id"
     t.index ["brand_id"], name: "index_feeding_calculations_on_brand_id"
     t.index ["cat_id"], name: "index_feeding_calculations_on_cat_id"
     t.index ["main_food_id"], name: "index_feeding_calculations_on_main_food_id"
