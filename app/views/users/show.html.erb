@@ -4,6 +4,7 @@
 
   <% if @last_calculation.present? %>
     <div class="bg-white shadow-md rounded-lg p-5 flex flex-col items-center">
+      <p class="text-lg">前回選択したメーカー: <span class="font-semibold"><%= @last_calculation.brand.name %></span></p>
       <p class="text-lg">前回選択したフード: <span class="font-semibold"><%= @last_calculation.main_food.name %></span></p>
       <p class="text-lg">体重: <span class="font-semibold"><%= @last_calculation.cat.weight %></span> kg</p>
       <p class="text-lg">合計カロリー: <span class="font-semibold"><%= @last_calculation.total_daily_calories %></span> kcal</p>

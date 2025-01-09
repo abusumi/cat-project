@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_29_192456) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_08_081253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_29_192456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.bigint "brand_id", null: false
+    t.index ["brand_id"], name: "index_feeding_calculations_on_brand_id"
     t.index ["cat_id"], name: "index_feeding_calculations_on_cat_id"
     t.index ["main_food_id"], name: "index_feeding_calculations_on_main_food_id"
     t.index ["sub_food_id"], name: "index_feeding_calculations_on_sub_food_id"
@@ -92,6 +94,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_29_192456) do
   end
 
   add_foreign_key "cats", "users"
+  add_foreign_key "feeding_calculations", "brands"
   add_foreign_key "feeding_calculations", "cats"
   add_foreign_key "feeding_calculations", "foods", column: "main_food_id"
   add_foreign_key "feeding_calculations", "foods", column: "sub_food_id"

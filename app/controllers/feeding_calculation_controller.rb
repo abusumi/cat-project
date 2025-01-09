@@ -2,6 +2,7 @@ class FeedingCalculationController < ApplicationController
   before_action :authenticate_user!, only: [ :save ]
 
   def new
+    @brand = Brand.all
     @foods = Food.all
   end
 
@@ -10,6 +11,7 @@ class FeedingCalculationController < ApplicationController
       redirect_to root_path and return
     end
     # フードと体重の取得
+    brand = Brand.find(params[:brand_id])
     food = Food.find(params[:food_id])
     weight = params[:weight].to_f
 
@@ -21,21 +23,24 @@ class FeedingCalculationController < ApplicationController
 
     # 結果を表示 (保存はしない)
     @result = {
+      brand_id: brand.id,
       food_id: food.id,
       weight: weight,
       daily_amount: daily_amount.round(2),
       calories: rer.round(2)
     }
 
+    brand = Brand.find(@result[:brand_id])
     food = Food.find(@result[:food_id])
+    @result[:brand_name] = brand.name
     @result[:food_name] = food.name  # foodの名前を追加
 
     render :result
   end
 
   def save
-    Rails.logger.debug("Food ID: #{params[:food_id]}")
     # ログインユーザーのみ保存
+    brand = Brand.find(params[:brand_id])
     food = Food.find(params[:food_id])
     weight = params[:weight].to_f
     # cat_name = params[:cat_name]
@@ -44,6 +49,7 @@ class FeedingCalculationController < ApplicationController
     daily_amount = (rer / food.calories_per_gram.to_f).round
 
     @result = {
+      brand_id: brand.id,
       food_id: food.id,
       weight: weight,
       daily_amount: daily_amount.round(2),
@@ -58,7 +64,8 @@ class FeedingCalculationController < ApplicationController
     FeedingCalculation.create!(
       user: current_user,
       cat: cat,
-      main_food_id: food.name,
+      brand_id: brand.id,
+      main_food_id: food.id,
       cat_id: cat.id,
       main_food_id: food.id,
       main_food_amount: daily_amount,
