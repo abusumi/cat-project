@@ -31,6 +31,14 @@ class FeedingCalculationController < ApplicationController
       sub_daily_amount = 0
     end
 
+    total_daily_calories =
+    if sub_food
+      (main_rer / 2 + sub_rer / 2).round(2)  # メインフードとサブフードを50%ずつ
+    else
+      main_rer.round(2)  # メインフードのみ
+    end
+
+
     # main_amount = (main_rer / main_food.calories_per_gram.to_f).round
     # sub_food_amount = sub_food ? (sub_rer / sub_food.calories_per_gram.to_f).round : 0
 
@@ -43,7 +51,7 @@ class FeedingCalculationController < ApplicationController
       weight: weight,
       main_food_amount: main_daily_amount,
       sub_food_amount: sub_daily_amount,
-      total_daily_calories: (main_rer + sub_rer).round(2)
+      total_daily_calories: total_daily_calories
 
     }
     
@@ -76,6 +84,13 @@ class FeedingCalculationController < ApplicationController
       sub_daily_amount = 0
     end
 
+    total_daily_calories =
+    if sub_food
+      (main_rer / 2 + sub_rer / 2).round(2)  # メインフードとサブフードを50%ずつ
+    else
+      main_rer.round(2)  # メインフードのみ
+    end
+
     # 猫情報を保存
     cat = current_user.cats.create(weight: weight) # name: cat_name,
 
@@ -89,7 +104,7 @@ class FeedingCalculationController < ApplicationController
       sub_food: sub_food,
       main_food_amount: main_daily_amount,
       sub_food_amount: sub_daily_amount,
-      total_daily_calories: (main_rer + sub_rer).round(2)
+      total_daily_calories: total_daily_calories
     )
 
     flash[:notice] = "給与量の計算結果を保存しました！"
