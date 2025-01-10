@@ -1,24 +1,47 @@
 document.addEventListener("turbo:load", () => {
-  const brandSelect = document.getElementById("brand_select");
-  const foodSelect = document.getElementById("food_select");
+  // メインフードのメーカーとフード
+  const mainBrandSelect = document.getElementById("main_brand_select");
+  const mainFoodSelect = document.getElementById("main_food_select");
 
-  if (brandSelect && foodSelect) {
-    brandSelect.addEventListener("change", (event) => {
+  if (mainBrandSelect && mainFoodSelect) {
+    mainBrandSelect.addEventListener("change", (event) => {
       const brandId = event.target.value;
-
-      // プルダウンをリセットして「フードを選択」を追加
-      foodSelect.innerHTML = "<option value=''>フードを選択</option>";
-
+      mainFoodSelect.innerHTML = "<option value=''>フードを選択</option>";
       if (brandId) {
         fetch(`/brands/${brandId}/foods`)
           .then((response) => response.json())
           .then((foods) => {
-            // フードのオプションを追加
             foods.forEach((food) => {
               const option = document.createElement("option");
               option.value = food.id;
               option.textContent = food.name;
-              foodSelect.appendChild(option);
+              mainFoodSelect.appendChild(option);
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching foods:", error);
+          });
+      }
+    });
+  }
+
+  // サブフードのメーカーとフード
+  const subBrandSelect = document.getElementById("sub_brand_select");
+  const subFoodSelect = document.getElementById("sub_food_select");
+
+  if (subBrandSelect && subFoodSelect) {
+    subBrandSelect.addEventListener("change", (event) => {
+      const brandId = event.target.value;
+      subFoodSelect.innerHTML = "<option value=''>フードを選択</option>";
+      if (brandId) {
+        fetch(`/brands/${brandId}/foods`)
+          .then((response) => response.json())
+          .then((foods) => {
+            foods.forEach((food) => {
+              const option = document.createElement("option");
+              option.value = food.id;
+              option.textContent = food.name;
+              subFoodSelect.appendChild(option);
             });
           })
           .catch((error) => {

@@ -2,10 +2,10 @@
 <div class="flex justify-center mb-12">
   <div class="text-left space-y-4">
     <p class="text-xl mb-6 ">メーカー名: <strong><%= @result[:brand_name] %></strong></p>
-    <p class="text-xl mb-6 ">フード名: <strong><%= @result[:food_name] %></strong></p>
+    <p class="text-xl mb-6 ">フード名: <strong><%= @result[:main_food_name] %></strong></p>
     <p class="text-xl mb-6 ">体重: <strong><%= @result[:weight] %></strong> kg</p>
-    <p class="text-xl mb-6 ">1日の必要給与量: <strong><%= @result[:daily_amount] %></strong> g</p>
-    <p class="text-xl mb-6 ">必要エネルギー要求量 (RER): <strong><%= @result[:calories] %></strong> kcal</p>
+    <p class="text-xl mb-6 ">1日の必要給与量: <strong><%= @result[:main_food_amount] %></strong> g</p>
+    <p class="text-xl mb-6 ">必要エネルギー要求量 (RER): <strong><%= @result[:total_daily_calories] %></strong> kcal</p>
   </div>
 </div>
   

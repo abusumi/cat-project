@@ -6,7 +6,8 @@ class BrandsController < ApplicationController
   end
 
   def foods
-    @foods = Food.where(brand_id: params[:id]) # メーカーに関連するフードを取得
-    render json: @foods # フード情報をJSON形式で返す
+    brand = Brand.find(params[:id])
+    foods = brand.foods.select(:id, :name) # 必要なカラムだけ選択
+    render json: foods
   end
 end
