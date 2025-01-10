@@ -36,16 +36,21 @@ class FeedingCalculationController < ApplicationController
 
     # 結果を表示 (保存はしない)
     @result = {
-      main_brand_name: main_brand.name,
-      main_food_name: main_food.name,
-      sub_brand_name: sub_brand&.name,
-      sub_food_name: sub_food&.name,
+      main_brand_id: main_brand.id,
+      main_food_id: main_food.id,
+      sub_brand_id: sub_brand&.id,
+      sub_food_id: sub_food&.id,
       weight: weight,
       main_food_amount: main_daily_amount,
       sub_food_amount: sub_daily_amount,
       total_daily_calories: (main_rer + sub_rer).round(2)
 
     }
+    
+    @result[:main_brand_name] = main_brand.name
+    @result[:main_food_name] = main_food.name  # foodの名前を追加
+    @result[:sub_brand_name] = sub_brand.name
+    @result[:sub_food_name] = sub_food.name  
 
     render :result
   end
@@ -55,8 +60,8 @@ class FeedingCalculationController < ApplicationController
     main_brand = Brand.find(params[:main_brand_id])
     sub_brand = params[:sub_brand_id].present? ? Brand.find(params[:sub_brand_id]) : nil
     main_food = Food.find(params[:main_food_id])
-    weight = params[:weight].to_f
     sub_food = params[:sub_food_id].present? ? Food.find(params[:sub_food_id]) : nil
+    weight = params[:weight].to_f
 
     # cat_name = params[:cat_name]
 
@@ -78,14 +83,13 @@ class FeedingCalculationController < ApplicationController
     FeedingCalculation.create!(
       user: current_user,
       cat: cat,
-      brand: brand,
+      brand_id: main_brand.id,
       main_food_id: main_food.id,
-      sub_food_id: sub_food&.id,
+      brand_id: sub_brand.id,
+      sub_food: sub_food,
       main_food_amount: main_daily_amount,
       sub_food_amount: sub_daily_amount,
-      total_daily_calories: (main_rer + sub_rer).round(2),
-      main_brand_name: main_brand.name,
-      sub_brand_name: sub_brand&.name
+      total_daily_calories: (main_rer + sub_rer).round(2)
     )
 
     flash[:notice] = "給与量の計算結果を保存しました！"

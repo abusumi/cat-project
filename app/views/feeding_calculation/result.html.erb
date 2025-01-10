@@ -1,10 +1,13 @@
 <h2 class="text-center mb-6 text-2xl" >計算結果</h2>
 <div class="flex justify-center mb-12">
   <div class="text-left space-y-4">
-    <p class="text-xl mb-6 ">メーカー名: <strong><%= @result[:brand_name] %></strong></p>
-    <p class="text-xl mb-6 ">フード名: <strong><%= @result[:main_food_name] %></strong></p>
+    <p class="text-xl mb-6 ">メインフード メーカー名: <strong><%= @result[:main_brand_name] %></strong></p>
+    <p class="text-xl mb-6 ">メインフード フード名: <strong><%= @result[:main_food_name] %></strong></p>
+    <p class="text-xl mb-6 ">サブフード メーカー名: <strong><%= @result[:sub_brand_name] %></strong></p>
+    <p class="text-xl mb-6 ">サブメインフード フード名: <strong><%= @result[:sub_food_name] %></strong></p>
     <p class="text-xl mb-6 ">体重: <strong><%= @result[:weight] %></strong> kg</p>
-    <p class="text-xl mb-6 ">1日の必要給与量: <strong><%= @result[:main_food_amount] %></strong> g</p>
+    <p class="text-xl mb-6 ">メインフードの1日の必要給与量: <strong><%= @result[:main_food_amount] %></strong> g</p>
+    <p class="text-xl mb-6 ">サブフードの1日の必要給与量: <strong><%= @result[:sub_food_amount] %></strong> g</p>
     <p class="text-xl mb-6 ">必要エネルギー要求量 (RER): <strong><%= @result[:total_daily_calories] %></strong> kcal</p>
   </div>
 </div>
@@ -12,9 +15,13 @@
 <div class="flex justify-center">
   <div class="text-xl mb-6">
     <%= form_with url: save_feeding_calculation_index_path, method: :post, local: true do |f| %>
-      <%= f.hidden_field :brand_id, value: @result[:brand_id] %>
-      <%= f.hidden_field :food_id, value: @result[:food_id] %>
-      <%= f.hidden_field :weight, value: @result[:weight] %>
+      <%= hidden_field_tag :main_brand_id, @result[:main_brand_id] %>
+      <%= hidden_field_tag :main_food_id, @result[:main_food_id] %>
+      <%= hidden_field_tag :weight, @result[:weight] %>
+      <% if @result[:sub_brand_id].present? %>
+        <%= hidden_field_tag :sub_brand_id, @result[:sub_brand_id] %>
+        <%= hidden_field_tag :sub_food_id, @result[:sub_food_id] %>
+      <% end %>
       <button type="submit" class="btn btn-wide text-xl bg-pink-200 text-orange-700 hover:bg-pink-100">マイページに保存する</button>
     <% end %>
   </div>
