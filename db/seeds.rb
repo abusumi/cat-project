@@ -21,5 +21,6 @@ CSV.foreach('db/foods.csv', headers: true) do |row|
     food.calories_per_gram = row['calories_per_gram']
     food.seventy = row['seventy']
     food.coefficient = row['coefficient']
+    food.external_url = row['external_url']
   end
 end

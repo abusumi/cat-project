@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_08_081253) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_11_160053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +55,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_08_081253) do
     t.decimal "coefficient"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "external_url"
     t.index ["brand_id"], name: "index_foods_on_brand_id"
   end
 
