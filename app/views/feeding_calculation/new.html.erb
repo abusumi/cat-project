@@ -2,13 +2,23 @@
 <div class="flex justify-center">
   <%= form_with url: calculate_feeding_calculation_index_path, method: :post, local: true, data: { turbo: false } do |form| %>
     <div class="text-xl mb-6">
-      <%= form.label :brand_id, "メーカーを選択" %>
-      <%= select_tag :brand_id, options_from_collection_for_select(Brand.all, :id, :name), prompt: "メーカーを選択", id: "brand_select" %>
+      <%= form.label :main_brand_id, "メインフードのメーカー" %>
+      <%= select_tag :main_brand_id, options_from_collection_for_select(Brand.all, :id, :name), prompt: "メーカーを選択", id: "main_brand_select" %>
     </div>
 
     <div class="text-xl mb-6">
-      <%= form.label :food_id, "フードを選択" %>
-      <%= select_tag :food_id, "", prompt: "フードを選択", id: "food_select", name: "food_id" %>
+      <%= form.label :main_food_id, "メインフード" %>
+      <%= select_tag :main_food_id, "", prompt: "フードを選択", id: "main_food_select", name: "main_food_id" %>
+    </div>
+
+    <div class="text-xl mb-6">
+      <%= form.label :sub_brand_id, "サブフードのメーカー (任意)" %>
+      <%= select_tag :sub_brand_id, options_from_collection_for_select(Brand.all, :id, :name), prompt: "メーカーを選択", id: "sub_brand_select" %>
+    </div>
+
+    <div class="text-xl mb-6">
+      <%= form.label :sub_food_id, "サブフード (任意)" %>
+      <%= select_tag :sub_food_id, "", prompt: "フードを選択", id: "sub_food_select", name: "sub_food_id" %>
     </div>
 
     <div class="text-xl mb-6 flex items-center">

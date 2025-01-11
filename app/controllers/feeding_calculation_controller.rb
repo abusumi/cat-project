@@ -7,55 +7,89 @@ class FeedingCalculationController < ApplicationController
   end
 
   def calculate
-    if params[:food_id].nil?
-      redirect_to root_path and return
+    if params[:main_food_id].blank?
+      redirect_to root_path, alert: "メインフードを選択してください。" and return
     end
+
     # フードと体重の取得
-    brand = Brand.find(params[:brand_id])
-    food = Food.find(params[:food_id])
+    main_brand = Brand.find(params[:main_brand_id])
+    sub_brand = params[:sub_brand_id].present? ? Brand.find(params[:sub_brand_id]) : nil
+    main_food = Food.find(params[:main_food_id])
     weight = params[:weight].to_f
+    sub_food = params[:sub_food_id].present? ? Food.find(params[:sub_food_id]) : nil
 
     # 必要エネルギー要求量 (RER) の計算
-    rer = food.seventy.to_f * (weight ** food.coefficient.to_f)
+    main_rer = main_food.seventy.to_f * (weight ** main_food.coefficient.to_f)
+    sub_rer = sub_food ? sub_food.seventy.to_f * (weight ** sub_food.coefficient.to_f) : 0
 
     # 必要給与量の計算
-    daily_amount = (rer / food.calories_per_gram.to_f).round
+    if sub_food
+      main_daily_amount = ((main_rer / 2) / main_food.calories_per_gram.to_f).round(2)
+      sub_daily_amount = ((sub_rer / 2) / sub_food.calories_per_gram.to_f).round(2)
+    else
+      main_daily_amount = (main_rer / main_food.calories_per_gram.to_f).round(2)
+      sub_daily_amount = 0
+    end
+
+    total_daily_calories =
+    if sub_food
+      (main_rer / 2 + sub_rer / 2).round(2)  # メインフードとサブフードを50%ずつ
+    else
+      main_rer.round(2)  # メインフードのみ
+    end
+
+
+    # main_amount = (main_rer / main_food.calories_per_gram.to_f).round
+    # sub_food_amount = sub_food ? (sub_rer / sub_food.calories_per_gram.to_f).round : 0
 
     # 結果を表示 (保存はしない)
     @result = {
-      brand_id: brand.id,
-      food_id: food.id,
+      main_brand_id: main_brand.id,
+      main_food_id: main_food.id,
+      sub_brand_id: sub_brand&.id,
+      sub_food_id: sub_food&.id,
       weight: weight,
-      daily_amount: daily_amount.round(2),
-      calories: rer.round(2)
+      main_food_amount: main_daily_amount,
+      sub_food_amount: sub_daily_amount,
+      total_daily_calories: total_daily_calories
+
     }
 
-    brand = Brand.find(@result[:brand_id])
-    food = Food.find(@result[:food_id])
-    @result[:brand_name] = brand.name
-    @result[:food_name] = food.name  # foodの名前を追加
+    @result[:main_brand_name] = main_brand.name
+    @result[:main_food_name] = main_food.name  # foodの名前を追加
+    @result[:sub_brand_name] = sub_brand&.name
+    @result[:sub_food_name] = sub_food&.name
 
     render :result
   end
 
   def save
     # ログインユーザーのみ保存
-    brand = Brand.find(params[:brand_id])
-    food = Food.find(params[:food_id])
+    main_brand = Brand.find(params[:main_brand_id])
+    sub_brand = params[:sub_brand_id].present? ? Brand.find(params[:sub_brand_id]) : nil
+    main_food = Food.find(params[:main_food_id])
+    sub_food = params[:sub_food_id].present? ? Food.find(params[:sub_food_id]) : nil
     weight = params[:weight].to_f
+
     # cat_name = params[:cat_name]
 
-    rer = food.seventy.to_f * (weight ** food.coefficient.to_f)
-    daily_amount = (rer / food.calories_per_gram.to_f).round
+    main_rer = main_food.seventy.to_f * (weight ** main_food.coefficient.to_f)
+    sub_rer = sub_food ? sub_food.seventy.to_f * (weight ** sub_food.coefficient.to_f) : 0
 
-    @result = {
-      brand_id: brand.id,
-      food_id: food.id,
-      weight: weight,
-      daily_amount: daily_amount.round(2),
-      calories: rer.round(2) # ここでも小数点第二位まで丸める
-    }
+    if sub_food
+      main_daily_amount = ((main_rer / 2) / main_food.calories_per_gram.to_f).round(2)
+      sub_daily_amount = ((sub_rer / 2) / sub_food.calories_per_gram.to_f).round(2)
+    else
+      main_daily_amount = (main_rer / main_food.calories_per_gram.to_f).round(2)
+      sub_daily_amount = 0
+    end
 
+    total_daily_calories =
+    if sub_food
+      (main_rer / 2 + sub_rer / 2).round(2)  # メインフードとサブフードを50%ずつ
+    else
+      main_rer.round(2)  # メインフードのみ
+    end
 
     # 猫情報を保存
     cat = current_user.cats.create(weight: weight) # name: cat_name,
@@ -64,12 +98,13 @@ class FeedingCalculationController < ApplicationController
     FeedingCalculation.create!(
       user: current_user,
       cat: cat,
-      brand_id: brand.id,
-      main_food_id: food.id,
-      cat_id: cat.id,
-      main_food_id: food.id,
-      main_food_amount: daily_amount,
-      total_daily_calories: rer.round(2)
+      brand_id: main_brand.id,
+      main_food_id: main_food.id,
+      brand_id: sub_brand&.id,
+      sub_food: sub_food,
+      main_food_amount: main_daily_amount,
+      sub_food_amount: sub_daily_amount,
+      total_daily_calories: total_daily_calories
     )
 
     flash[:notice] = "給与量の計算結果を保存しました！"
