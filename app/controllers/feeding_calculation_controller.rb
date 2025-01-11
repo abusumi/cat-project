@@ -57,8 +57,8 @@ class FeedingCalculationController < ApplicationController
     
     @result[:main_brand_name] = main_brand.name
     @result[:main_food_name] = main_food.name  # foodの名前を追加
-    @result[:sub_brand_name] = sub_brand.name
-    @result[:sub_food_name] = sub_food.name  
+    @result[:sub_brand_name] = sub_brand&.name
+    @result[:sub_food_name] = sub_food&.name  
 
     render :result
   end
@@ -100,7 +100,7 @@ class FeedingCalculationController < ApplicationController
       cat: cat,
       brand_id: main_brand.id,
       main_food_id: main_food.id,
-      brand_id: sub_brand.id,
+      brand_id: sub_brand&.id,
       sub_food: sub_food,
       main_food_amount: main_daily_amount,
       sub_food_amount: sub_daily_amount,
