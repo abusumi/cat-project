@@ -1,6 +1,8 @@
 <h1>詳細ページ</h1>
-<div class = "food" >
+<div class="food">
   <p><%= @food.brand.name %></p>
   <p><%= @food.name %></p>
-  <p><%= link_to "商品リンク", @food.external_url, class: "text-blue-500 hover:underline" %></p>
+  <p>
+    <%= link_to "商品リンク", safe_external_url(@food.external_url), class: "text-blue-500 hover:underline", target: "_blank", rel: "noopener" %>
+  </p>
 </div>
