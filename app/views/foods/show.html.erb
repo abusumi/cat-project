@@ -2,5 +2,5 @@
 <div class = "food" >
   <p><%= @food.brand.name %></p>
   <p><%= @food.name %></p>
-  <p><a href="<%= @food.external_url %>" style="color: lightblue;">商品リンク</a></p>
+  <p><%= link_to "商品リンク", @food.external_url, class: "text-blue-500 hover:underline" %></p>
 </div>

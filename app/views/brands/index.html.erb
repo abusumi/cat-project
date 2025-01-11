@@ -5,8 +5,10 @@
         <%= brand_name %>
       </h2>
       <ul class="list-disc pl-6 text-gray-700">
-        <% foods.each do |_, food_name| %>
-          <li class="py-1"><%= food_name %></li>
+        <% foods.each do |_, food_id, food_name| %>
+          <li class="py-1">
+            <%= link_to food_name, food_path(food_id), class: "text-blue-500 hover:underline" %>
+          </li>
         <% end %>
       </ul>
     </div>
