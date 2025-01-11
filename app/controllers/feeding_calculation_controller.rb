@@ -54,11 +54,11 @@ class FeedingCalculationController < ApplicationController
       total_daily_calories: total_daily_calories
 
     }
-    
+
     @result[:main_brand_name] = main_brand.name
     @result[:main_food_name] = main_food.name  # foodの名前を追加
     @result[:sub_brand_name] = sub_brand&.name
-    @result[:sub_food_name] = sub_food&.name  
+    @result[:sub_food_name] = sub_food&.name
 
     render :result
   end
@@ -75,7 +75,7 @@ class FeedingCalculationController < ApplicationController
 
     main_rer = main_food.seventy.to_f * (weight ** main_food.coefficient.to_f)
     sub_rer = sub_food ? sub_food.seventy.to_f * (weight ** sub_food.coefficient.to_f) : 0
-  
+
     if sub_food
       main_daily_amount = ((main_rer / 2) / main_food.calories_per_gram.to_f).round(2)
       sub_daily_amount = ((sub_rer / 2) / sub_food.calories_per_gram.to_f).round(2)
