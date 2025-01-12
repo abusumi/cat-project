@@ -1,0 +1,7 @@
+<div class='ms-auto'>
+  <% if current_user.bookmark?(food) %>
+    <%= render 'unbookmark', { food: food } %>
+  <% else %>
+    <%= render 'bookmark', { food: food } %>
+  <% end %>
+</div>

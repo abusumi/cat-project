@@ -1,0 +1,15 @@
+<h1>ブックマーク一覧</h1>
+
+<% if @bookmark_foods.present? %>
+  <ul>
+    <% @bookmark_foods.each do |food| %>
+      <li>
+        <p><strong>ブランド:</strong> <%= food.brand.name %></p>
+        <p><%= food.name %></p>
+        <%= link_to "商品詳細", food_path(food), class: "text-blue-500 hover:underline", target: "_blank", rel: "noopener"  %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>ブックマークされたフードはありません。</p>
+<% end %>

@@ -28,7 +28,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :foods, only: [ :show ]
+  resources :foods, only: [ :show ] do
+    collection do
+      get :bookmarks
+    end
+  end
+
+  resources :bookmarks, only: [ :create, :destroy ]
+
+
   # Defines the root path route ("/")
   # root "posts#index"
   root "feeding_calculation#new"
