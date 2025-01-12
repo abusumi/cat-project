@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :review
   has_many :helpful
   has_many :feeding_calculations, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_foods, through: :bookmarks, source: :food
 
 
   validates :name, presence: true, length: { in: 1..20 }
