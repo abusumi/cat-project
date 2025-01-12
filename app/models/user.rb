@@ -13,6 +13,18 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_foods, through: :bookmarks, source: :food
 
+  def bookmark(food)
+    bookmark_foods << food
+  end
+
+  def unbookmark(food)
+    bookmarks.find_by(food_id: food.id)&.destroy
+  end
+
+  def bookmark?(food)
+    bookmark_foods.include?(food)
+  end
+
 
   validates :name, presence: true, length: { in: 1..20 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true

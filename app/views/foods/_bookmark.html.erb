@@ -1,0 +1,3 @@
+<%= link_to bookmarks_path(food_id: food.id), id: "bookmark-button-for-food-#{food.id}", data: { "turbo_method": :post } do %>
+<span class="material-icons">bookmark_border</span>
+<% end %>
