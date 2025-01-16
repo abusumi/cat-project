@@ -1,0 +1,8 @@
+<% @reviews.each do |review| %>
+  <div class="review">
+    <p>User ID: <%= review.user_id %></p>
+    <p>Rating: <%= review.rating %></p>
+    <p>comment: <%= review.comment %></p>
+    <p>Created at: <%= review.created_at.strftime('%Y-%m-%d %H:%M') %></p>
+  </div>
+<% end %>

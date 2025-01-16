@@ -3,10 +3,21 @@ module.exports = {
     './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
     './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js'
+    './app/javascript/**/*.js',
   ],
-  plugins: [require("daisyui")],
+  theme: {
+    extend: {
+      extend:{
+        fontFamily: {
+        'zen': ['Zen Kaku Gothic New', 'sans-serif'],
+        'lilita': ['Lilita One', 'system-ui'],
+      },
+    }, // 新しい設定を追加する場合はここに書く
+  },
+  plugins: [
+    require("daisyui"), // プラグインの設定を追加
+  ],
   daisyui: {
-    darkTheme: false, // ダークモードをONにする場合は削除
+    darkTheme: false, // ダークモードの設定
   },
 }

@@ -1,11 +1,31 @@
 class ReviewsController < ApplicationController
-  def create
-    @review = @food.reviews.new
-    @review.user = current_user
+  before_action :set_food, only: [:new, :create, :index]
 
-    if @review.save
-      redirect_to food_path, notice: "レビューを投稿しました。"
+  def new
+    @review = @food.reviews.new
+  end
+
+  def create
+    @review = @food.reviews.find_or_initialize_by(user_id:  current_user.id, food_id: @food.id)
+    if @review.update(review_params)
+      redirect_to food_path(@food), notice: "レビューを投稿しました。"
     else
-      redirect_to food_path, alert: "レビューの投稿に失敗しました。"
+      flash[:alert] = "レビューの投稿に失敗しました。"
+      render :new
     end
+  end
+
+  def index
+    @reviews = @food.reviews.includes(:user).order(created_at: :desc)
+  end
+
+  private
+
+  def set_food
+    @food = Food.find(params[:food_id])
+  end
+
+  def review_params
+    params.require(:review).permit(:rating, :comment, :user_id)
+  end
 end
