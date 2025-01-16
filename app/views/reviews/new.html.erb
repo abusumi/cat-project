@@ -14,25 +14,29 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    function initializeStarRating() {
       const stars = document.querySelectorAll("#starRating .star");
-      stars.forEach((star) => {
-        star.addEventListener("click", function() {
-          const rating = this.getAttribute("data-rating");
-          stars.forEach((s, index) => {
-            if (index < rating) {
-              s.classList.add("text-yellow-400");
-              s.classList.remove("text-gray-300");
-            } else {
-              s.classList.add("text-gray-300");
-              s.classList.remove("text-yellow-400");
-            }
+      if (stars.length > 0) {
+        stars.forEach((star) => {
+          star.addEventListener("click", function() {
+            const rating = this.getAttribute("data-rating");
+            stars.forEach((s, index) => {
+              if (index < rating) {
+                s.classList.add("text-yellow-400");
+                s.classList.remove("text-gray-300");
+              } else {
+                s.classList.add("text-gray-300");
+                s.classList.remove("text-yellow-400");
+              }
+            });
+            document.getElementById("rating").value = rating;
           });
-          document.getElementById("rating").value = rating;
         });
-      });
-    });
+      }
+    }
+    document.addEventListener("turbo:load", initializeStarRating);
   </script>
+
 
   <div class="mb-4">
     <label for="comment" class="block text-sm font-medium text-gray-700">コメント</label>
