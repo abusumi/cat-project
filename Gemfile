@@ -26,6 +26,9 @@ gem "devise-i18n"
 gem "devise-i18n-views"
 gem "rails-i18n", "~> 7.0.0"
 gem "dotenv-rails"
+gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
+gem 'omniauth-google-oauth2'
 gem "net-smtp"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
