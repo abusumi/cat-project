@@ -1,6 +1,5 @@
 class Review < ApplicationRecord
   belongs_to :user
-  belongs_to :main_food, class_name: "Food"
-  belongs_to :sub_food, class_name: "Food", optional: true
+  belongs_to :food
   has_many :helpful
 end

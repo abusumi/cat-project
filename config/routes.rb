@@ -32,10 +32,12 @@ Rails.application.routes.draw do
     collection do
       get :bookmarks
     end
+    resources :reviews, only: [ :index, :new, :create ]
   end
 
-  resources :bookmarks, only: [ :create, :destroy ]
+  # resources :reviews, only: [ :index ]
 
+  resources :bookmarks, only: [ :create, :destroy ]
 
   # Defines the root path route ("/")
   # root "posts#index"

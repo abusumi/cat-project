@@ -6,9 +6,9 @@ class User < ApplicationRecord
 
   enum role: { general: 0, admin: 1 } # 役割の定義
 
-  has_many :cats
-  has_many :review
-  has_many :helpful
+  has_many :cats, dependent: :destroy
+  has_many :review, dependent: :destroy
+  has_many :helpful, dependent: :destroy
   has_many :feeding_calculations, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_foods, through: :bookmarks, source: :food

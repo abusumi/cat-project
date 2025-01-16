@@ -2,4 +2,3 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "./packs/brand_food_filter";
-
