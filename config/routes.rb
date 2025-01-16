@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     collection do
       get :bookmarks
     end
-    resources :reviews, only: [ :index, :new, :create]
+    resources :reviews, only: [ :index, :new, :create ]
   end
 
   # resources :reviews, only: [ :index ]

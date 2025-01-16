@@ -7,12 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      extend:{
-        fontFamily: {
+      fontFamily: {
         'zen': ['Zen Kaku Gothic New', 'sans-serif'],
         'lilita': ['Lilita One', 'system-ui'],
       },
-    }, // 新しい設定を追加する場合はここに書く
+    }, // 新しい設定を追加する場合はここに書く 
   },
   plugins: [
     require("daisyui"), // プラグインの設定を追加

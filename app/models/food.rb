@@ -15,7 +15,7 @@ class Food < ApplicationRecord
 
   def rating_percentage
     total = total_reviews.to_f
-    return { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0} if total.zero?
+    return { 1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0 } if total.zero?
 
     (1..5).each_with_object({}) do |star, percecntages|
       percecntages[star] = ((reviews.where(rating: star).count / total) * 100).round

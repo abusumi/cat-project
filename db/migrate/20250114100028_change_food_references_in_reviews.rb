@@ -5,6 +5,6 @@ class ChangeFoodReferencesInReviews < ActiveRecord::Migration[7.2]
     add_column :reviews, :food_id, :bigint, null: false
 
     add_foreign_key :reviews, :foods, column: :food_id
-    add_index :reviews, [:user_id, :food_id], unique: true
+    add_index :reviews, [ :user_id, :food_id ], unique: true
   end
 end
