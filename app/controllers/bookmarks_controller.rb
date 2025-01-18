@@ -14,4 +14,8 @@ class BookmarksController < ApplicationController
     bookmark.destroy
     redirect_to food_path(food), notice: "ブックマークを解除しました。"
   end
+
+  def bookmarks
+    @bookmark_foods = current_user.bookmark_foods # 例: 現在のユーザーのブックマークを取得
+  end
 end

@@ -1,15 +1,16 @@
 <h1>ブックマーク一覧</h1>
 
-<% if @bookmark_foods.present? %>
-  <ul>
-    <% @bookmark_foods.each do |food| %>
-      <li>
-        <p><strong>ブランド:</strong> <%= food.brand.name %></p>
-        <p><%= food.name %></p>
-        <%= link_to "商品詳細", food_path(food), class: "text-blue-500 hover:underline", target: "_blank", rel: "noopener"  %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>ブックマークされたフードはありません。</p>
-<% end %>
+  <% if @bookmark_foods.present? %>
+    <ul>
+      <div class="grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+        <% @bookmark_foods.each do |food| %>
+          <li>
+            <%= render 'shared/food_card', food: food %>
+          </li>
+        <% end %>
+      </div>
+    </ul>
+  <% else %>
+    <p>ブックマークされたフードはありません。</p>
+  <% end %>
+
