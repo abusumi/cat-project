@@ -1,7 +1,17 @@
 class BrandsController < ApplicationController
   def index
-    @brands = Brand.includes(:foods).order(:id)
     @foods = Food.all
+    @q = Brand.ransack(params[:q])
+    @q.build_grouping unless @q.groupings.any? # グループ化を有効にする
+    @brands = @q.result.includes(:foods).order(:id)
+    
+    if params.dig(:q, :search_by_name).present?
+      @foods = Food.joins(:brand)
+                   .where("brands.name ILIKE :query OR foods.name ILIKE :query", query: "%#{params[:q][:search_by_name]}%")
+                   .distinct
+    else
+      @foods = Food.all
+    end
   end
 
   def foods
