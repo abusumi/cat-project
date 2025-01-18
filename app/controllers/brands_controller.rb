@@ -1,8 +1,7 @@
 class BrandsController < ApplicationController
   def index
-    @brand_foods = Brand.joins(:foods)
-                        .order("brands.id ASC, foods.id ASC")
-                        .pluck("brands.name", "foods.id", "foods.name")
+    @brands = Brand.includes(:foods).order(:id)
+    @foods = Food.all
   end
 
   def foods
