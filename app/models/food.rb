@@ -7,12 +7,12 @@ class Food < ApplicationRecord
 
   # Ransackで検索可能な属性を明示的に定義
   def self.ransackable_attributes(auth_object = nil)
-    ["name", "external_url", "brand_id", "created_at", "updated_at"]
+    [ "name", "external_url", "brand_id", "created_at", "updated_at" ]
   end
 
   # Ransackで関連を検索可能にするためのメソッド
   def self.ransackable_associations(auth_object = nil)
-    ["brand", "reviews"]
+    [ "brand", "reviews" ]
   end
 
   def average_rating
