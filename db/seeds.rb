@@ -7,6 +7,17 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+
+User.create!(
+  email: "user1@example.com",
+  password: "password",
+  name: "user1",
+  role: "general"
+)
+
+
 require "csv"
 # brands.csvを読み込んでbrandsテーブルにデータを追加
 # brands.csvを読み込んでbrandsテーブルにデータを追加
