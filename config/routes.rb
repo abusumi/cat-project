@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { 
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
   resources :users, only: [ :show, :edit, :update ] do
     resources :cats, only: [ :new, :create, :edit, :update, :show, :destroy ]
   end
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  post 'logout', to: 'sessions#destroy', as: 'logout'
 
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
