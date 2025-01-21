@@ -112,6 +112,10 @@ GEM
     devise-i18n (1.12.1)
       devise (>= 4.9.0)
     devise-i18n-views (0.3.7)
+    dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     globalid (1.2.1)
@@ -154,16 +158,6 @@ GEM
       net-protocol
     nio4r (2.7.4)
     nokogiri (1.16.7-aarch64-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.7-arm-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.7-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.7-x86-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.7-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.26.3)
@@ -285,6 +279,8 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2025.1)
+      tzinfo (>= 1.0.0)
     unicode-display_width (2.6.0)
     useragent (0.16.10)
     warden (1.2.9)
@@ -304,11 +300,6 @@ GEM
 
 PLATFORMS
   aarch64-linux
-  arm-linux
-  arm64-darwin
-  x86-linux
-  x86_64-darwin
-  x86_64-linux
 
 DEPENDENCIES
   bootsnap
@@ -319,6 +310,7 @@ DEPENDENCIES
   devise (~> 4.9)
   devise-i18n
   devise-i18n-views
+  dotenv-rails
   jbuilder
   jsbundling-rails
   pg (~> 1.1)
