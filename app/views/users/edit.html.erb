@@ -2,7 +2,7 @@
   <div class="flex flex-col justify-center items-center mt-6 mb-6 mx-72">
     <h1 class="text-3xl font-bold text-accent text-center">ユーザープロフィール編集</h1>
   </div>
-  <%= form_with(model: @user, local: true) do |f| %>
+  <%= form_with(model: @user, method: :patch, data: { turbo: false }) do |f| %>
     <div class="my-4">
       <%= f.label :name %>
       <%= f.text_field :name %>
@@ -10,6 +10,9 @@
     <div class="my-4">
       <%= f.label :self_introduction %>
       <%= f.text_area :self_introduction %>
+    </div>
+    <div class="my-4">
+      <%= f.submit '更新する', class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>
