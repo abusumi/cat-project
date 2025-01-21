@@ -39,6 +39,14 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: [ :create, :destroy ]
 
+  resources :contacts, only: [:new, :create] do
+    collection do
+      post 'confirm'
+      post 'back'
+      get 'done'
+    end
+  end
+
   # Defines the root path route ("/")
   # root "posts#index"
   root "feeding_calculation#new"
