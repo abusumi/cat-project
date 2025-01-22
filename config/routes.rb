@@ -39,11 +39,11 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: [ :create, :destroy ]
 
-  resources :contacts, only: [:new, :create] do
+  resources :contacts, only: [ :new, :create ] do
     collection do
-      post 'confirm'
-      post 'back'
-      get 'done'
+      post "confirm"
+      post "back"
+      get "done"
     end
   end
 
