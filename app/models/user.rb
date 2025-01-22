@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :feeding_calculations, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_foods, through: :bookmarks, source: :food
+  has_one_attached :profile
 
   def bookmark(food)
     bookmark_foods << food
