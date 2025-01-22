@@ -10,12 +10,12 @@
 
 
 
-User.create!(
-  email: "user1@example.com",
-  password: "password",
-  name: "user1",
-  role: "general"
-)
+# User.create!(
+# email: "user1@example.com",
+# password: "password",
+# name: "user1",
+# role: "general"
+# )
 
 
 require "csv"
