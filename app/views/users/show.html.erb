@@ -1,5 +1,8 @@
 <div class="flex flex-col items-center">
   <h1 class="text-2xl font-bold mb-4">マイページ</h1>
+  <div class="mb-4">
+    <%= render 'shared/user_card' %>
+  </div>
   <h2 class="text-xl mb-2">前回の計算結果</h2>
 
   <% if @last_calculation.present? %>

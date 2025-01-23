@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: '#E17B34',
+      },
       fontFamily: {
         'zen': ['Zen Kaku Gothic New', 'sans-serif'],
         'lilita': ['Lilita One', 'system-ui'],
