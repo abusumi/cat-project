@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :users, only: [ :show, :edit, :update ]
+  resources :users, only: [ :show, :edit, :update ] do
+    resources :cats, only: [ :new, :create, :edit, :update, :show ]
+  end
 
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
