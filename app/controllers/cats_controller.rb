@@ -18,6 +18,16 @@ class CatsController < ApplicationController
     @cat = Cat.find(params[:id])
   end
 
+  def destroy
+    @cat = Cat.find(params[:id]) # まずは@catを見つける
+    @user = @cat.user # @catから@userを取得する
+    @cat.destroy! # その後に削除する
+    flash.now[:notice] = "削除しました"
+    render turbo_stream: [
+      turbo_stream.remove(@user),
+    ]
+  end
+
   private
 
   def set_user
