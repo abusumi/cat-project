@@ -13,8 +13,12 @@
       <%= f.file_field :cat_profile %>
     </div>
     <div class="my-4">
+      <%= f.label :cat_introduction %>
+      <%= f.text_area :cat_introduction, class: "resize-none h-32 w-full border border-gray-300 rounded-md" %>
+    </div>
+    <div class="my-4">
       <%= f.label :weight %>
-      <%= f.text_area :weight %>
+      <%= f.text_field :weight %>
     </div>
     <div class="my-4">
       <%= f.submit '登録する', class: 'btn btn-primary' %>

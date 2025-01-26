@@ -18,14 +18,27 @@ class CatsController < ApplicationController
     @cat = Cat.find(params[:id])
   end
 
+  def edit
+    @cat = Cat.find(params[:id])
+  end
+
+  def update
+    @cat = Cat.find(params[:id])
+
+    if @cat.update(cat_params)
+      redirect_to @user, notice: '情報が更新されました'
+    else
+      flash.now[:alert] = @cat.errors.full_messages.join(', ')
+      render :show
+    end
+  end
+
   def destroy
     @cat = Cat.find(params[:id]) # まずは@catを見つける
     @user = @cat.user # @catから@userを取得する
     @cat.destroy! # その後に削除する
-    flash.now[:notice] = "削除しました"
-    render turbo_stream: [
-      turbo_stream.remove(@user),
-    ]
+    flash[:notice] = "削除しました"
+    redirect_to user_path(@user)
   end
 
   private
@@ -35,6 +48,6 @@ class CatsController < ApplicationController
   end
 
   def cat_params
-    params.require(:cat).permit(:name, :weight, :cat_profile)
+    params.require(:cat).permit(:name, :weight, :cat_profile, :cat_introduction)
   end
 end
