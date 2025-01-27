@@ -4,6 +4,7 @@
     <div class="relative w-full h-48">
       <%= image_tag(@cat.cat_profile.attached? ? @cat.cat_profile : 'pets.png', class: "w-full h-full object-cover") %>
     </div>
+    <p class="text-gray-700 break-wordsp"><%= @cat.cat_introduction %> </p>
     <p class="text-gray-700">体重: <%= @cat.weight %> kg</p>
     <p class="text-gray-700">投稿者: <%= @cat.user.name %></p>
 

@@ -8,6 +8,7 @@
         </div>
         <div class="p-4">
           <h2 class="text-xl font-semibold text-gray-900"><%= cat.name %></h2>
+          <p class="text-l "><%= cat.cat_introduction %>
           <p class="text-sm text-gray-500">登録日: <%= cat.created_at.strftime('%Y-%m-%d') %></p>
           <%= link_to '詳細', user_cat_path(@user, cat), class: 'btn btn-sm md:btn-md btn-neutral' %>
         </div>
