@@ -26,9 +26,9 @@ class CatsController < ApplicationController
     @cat = Cat.find(params[:id])
 
     if @cat.update(cat_params)
-      redirect_to @user, notice: '情報が更新されました'
+      redirect_to @user, notice: "情報が更新されました"
     else
-      flash.now[:alert] = @cat.errors.full_messages.join(', ')
+      flash.now[:alert] = @cat.errors.full_messages.join(", ")
       render :show
     end
   end

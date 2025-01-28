@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to @user, notice: 'ユーザー情報が更新されました'
+      redirect_to @user, notice: "ユーザー情報が更新されました"
     else
-      flash.now[:alert] = @user.errors.full_messages.join(', ')
+      flash.now[:alert] = @user.errors.full_messages.join(", ")
       render :edit
     end
   end
