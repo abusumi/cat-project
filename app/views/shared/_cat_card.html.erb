@@ -1,0 +1,18 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-center text-accent mb-6">猫のプロフィール</h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <% @cats&.each do |cat| %>
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="relative w-full h-48">
+          <%= image_tag(cat.cat_profile.attached? ? cat.cat_profile : 'pets.png', class: "w-full h-full object-cover") %>
+        </div>
+        <div class="p-4">
+          <h2 class="text-xl font-semibold text-gray-900"><%= cat.name %></h2>
+          <p class="text-l "><%= cat.cat_introduction %>
+          <p class="text-sm text-gray-500">登録日: <%= cat.created_at.strftime('%Y-%m-%d') %></p>
+          <%= link_to '詳細', user_cat_path(@user, cat), class: 'btn btn-sm md:btn-md btn-neutral' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

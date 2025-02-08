@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :feeding_calculations, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_foods, through: :bookmarks, source: :food
+  has_one_attached :profile
 
   def bookmark(food)
     bookmark_foods << food
@@ -28,5 +29,5 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { in: 1..20 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, if: -> { password.present? }
 end
