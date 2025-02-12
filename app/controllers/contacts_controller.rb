@@ -4,11 +4,17 @@ class ContactsController < ApplicationController
   end
 
   def confirm
-    @contact = Contact.new(contact_params)
-    if @contact.invalid?
-      flash[:alert] = @contact.errors.full_messages.join(", ")
-      @contact = Contact.new
-      render :new
+    if request.post?
+      @contact = Contact.new(contact_params)
+      if @contact.invalid?
+        flash[:alert] = @contact.errors.full_messages.join(", ")
+        @contact = Contact.new
+        render :new
+        return
+      end
+      session[:contact_data] = contact_params # ← セッションにデータを保存
+    else
+      @contact = Contact.new(session[:contact_data] || {})
     end
   end
 
