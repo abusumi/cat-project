@@ -49,7 +49,7 @@ Rails.application.routes.draw do
 
   resources :contacts, only: [ :new, :create ] do
     collection do
-      match "confirm", via: [:get, :post]
+      match "confirm", via: [ :get, :post ]
       post "back"
       get "done"
     end
