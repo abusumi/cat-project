@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_create :set_default_provider
+
   def show
     @user = User.find(params[:id])
     @cats = @user.cats
@@ -21,6 +23,9 @@ class UsersController < ApplicationController
   end
 
   private
+  def set_default_provider
+    self.provider ||= "local"  # providerがnilの場合に"local"をセット
+  end
 
   def user_params
     params.require(:user).permit(:name, :self_introduction, :profile)

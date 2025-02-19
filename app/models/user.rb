@@ -41,5 +41,5 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 1..20 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, if: -> { password.present? }
-  validates :uid, uniqueness: { scope: :provider }
+  validates :uid, uniqueness: { scope: :provider }, allow_nil: true
 end
