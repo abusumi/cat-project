@@ -15,6 +15,11 @@ class User < ApplicationRecord
   has_many :bookmark_foods, through: :bookmarks, source: :food
   has_one_attached :profile
 
+  validates :name, presence: true, length: { in: 1..20 }
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
+  validates :password, presence: true, length: { minimum: 6 }, if: -> { password.present? }
+  validates :uid, uniqueness: { scope: :provider }, allow_nil: true
+
   def bookmark(food)
     bookmark_foods << food
   end
@@ -37,9 +42,4 @@ class User < ApplicationRecord
       # user.profile.attach(io: URI.open(auth.info.image), filename: 'profile.jpg', content_type: 'image/jpeg')
     end
   end
-
-  validates :name, presence: true, length: { in: 1..20 }
-  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 }, if: -> { password.present? }
-  validates :uid, uniqueness: { scope: :provider }, allow_nil: true
 end
