@@ -35,12 +35,19 @@ Rails.application.routes.draw do
     member do
       get :foods # /brands/:id/foods に対応
     end
+
+    collection do
+      get :autocomplete
+    end
   end
+
+
 
   resources :foods, only: [ :show ] do
     collection do
       get :bookmarks
     end
+
     resources :reviews, only: [ :index, :new, :create ]
   end
 

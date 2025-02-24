@@ -14,9 +14,14 @@ class BrandsController < ApplicationController
     end
   end
 
-  def foods
-    brand = Brand.find(params[:id])
-    foods = brand.foods.select(:id, :name) # 必要なカラムだけ選択
-    render json: foods
+  def autocomplete
+    query = params[:query].to_s.strip.downcase
+    return render json: [] if query.blank?
+
+    brands = Brand.where("name ILIKE ?", "%#{query}%").select(:name).limit(5)
+    foods = Food.where("name ILIKE ?", "%#{query}%").select(:name).limit(5)
+
+    results = (brands + foods).uniq { |item| item.name }
+    render json: results
   end
 end
