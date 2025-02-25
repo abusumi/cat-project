@@ -24,4 +24,10 @@ class BrandsController < ApplicationController
     results = (brands + foods).uniq { |item| item.name }
     render json: results
   end
+
+  def foods
+    brand = Brand.find(params[:id])
+    foods = brand.foods.select(:id, :name) # 必要なカラムだけ選択
+    render json: foods
+  end
 end

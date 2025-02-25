@@ -5,11 +5,12 @@
     <%= f.search_field :search_by_name, 
           class: "w-[300px] py-3 px-4 pl-11 block border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400", 
           placeholder: "ブランド名または商品名を入力してください", 
-          style: "width: 700px;",
+          style: "width: 500px;",
           data: { autocomplete_target: "input", action: "input->autocomplete#search" } %>
 
+    <!-- ここでmt-1を使って、候補一覧の位置を調整する -->
     <ul class="absolute bg-white border border-gray-300 shadow-md rounded-md w-[300px] mt-1 max-h-60 overflow-auto hidden" 
-        data-autocomplete-target="results" style="width: 700px;"></ul>
+        data-autocomplete-target="results" style="width: 500px; top: 100%; "></ul>
 
     <%= f.submit "検索", class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" %>
   </div>

@@ -10,7 +10,7 @@ export default class extends Controller {
   search(event) {
     const query = event.target.value.trim();
 
-    if (query.length < 2) {
+    if (query.length < 1) {
       this.hideResults();
       return;
     }
@@ -20,7 +20,7 @@ export default class extends Controller {
       .then(data => {
         this.updateResults(data);
       })
-      .catch(error => console.error("Fetch Error:", error));
+      .catch(error => console.error(" Fetch Error:", error));
   }
 
   updateResults(data) {
