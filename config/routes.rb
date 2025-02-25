@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "terms_of_service" => "terms_of_service#index"
+  get "privacy_policies" => "privacy_policies#index"
 
   resources :feeding_calculation, only: [ :new ] do
     collection do
