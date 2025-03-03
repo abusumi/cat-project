@@ -1,1 +1,30 @@
-<h1>トップページ</h1>
+<h1 class="text-center text-3xl font-bold mb-10 text-gray-800">ようこそ！</h1>
+
+<div class="relative z-10 flex flex-col md:flex-row justify-center gap-6 w-full px-5">
+  <%# 給与量の計算ボタン %>
+  <%= link_to new_feeding_calculation_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col w-full md:w-80 transition-all duration-300 hover:scale-105 bg-blue-500 text-white" do %>
+    <div class="absolute inset-0 bg-gradient-to-t from-blue-600 to-blue-400 opacity-80 rounded-lg pointer-events-none"></div>
+    <div class="relative flex flex-col items-center space-y-4">
+      <span class="material-icons" style="font-size: 48px;">calculate</span>
+      <h2 class="text-xl font-semibold">給与量の計算</h2>
+    </div>
+  <% end %>
+
+  <%# フード一覧ボタン %>
+  <%= link_to brands_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col w-full md:w-80 transition-all duration-300 hover:scale-105 bg-green-500 text-white" do %>
+    <div class="absolute inset-0 bg-gradient-to-t from-green-600 to-green-400 opacity-80 rounded-lg pointer-events-none"></div>
+    <div class="relative flex flex-col items-center space-y-4">
+      <span class="material-icons" style="font-size: 48px;">reviews</span>
+      <h2 class="text-xl font-semibold">フードレビュー</h2>
+    </div>
+  <% end %>
+
+  <%# みんなのペットボタン %>
+  <%= link_to "#", class: "relative card shadow-xl rounded-lg p-6 flex flex-col w-full md:w-80 transition-all duration-300 hover:scale-105 bg-orange-500 text-white" do %>
+    <div class="absolute inset-0 bg-gradient-to-t from-orange-600 to-orange-400 opacity-80 rounded-lg pointer-events-none"></div>
+    <div class="relative flex flex-col items-center space-y-4">
+      <span class="material-icons" style="font-size: 48px;">pets</span>
+      <h2 class="text-xl font-semibold">みんなのペット</h2>
+    </div>
+  <% end %>
+</div>
