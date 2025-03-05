@@ -1,6 +1,26 @@
 <div class="food-card p-4 bg-white shadow-md rounded-lg text-center max-w-[16rem]">
-  <%= image_tag "placeholder.png", alt: food.name, class: "w-full h-40 object-cover rounded-md mb-4" %>
   <h3 class="text-lg font-semibold text-gray-800 break-words"><%= food.name %></h3>
   <p class="text-sm text-gray-600 mt-2"><%= food.brand.name %></p>
+
+  <%# ★ ここに平均評価を表示 ★ %>
+  <div class="flex justify-center items-center mt-2">
+    <div class="flex">
+      <% 5.times do |i| %>
+        <% if i < food.average_rating.to_i %>
+          <svg class="w-4 h-4 text-yellow-300 me-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+          </svg>
+        <% else %>
+          <svg class="w-4 h-4 text-gray-300 me-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+          </svg>
+        <% end %>
+      <% end %>
+    </div>
+    <p class="ms-1 text-sm font-medium text-gray-500"><%= food.average_rating %></p>
+    <p class="ms-1 text-sm font-medium text-gray-500">out of</p>
+    <p class="ms-1 text-sm font-medium text-gray-500">5</p>
+  </div>
+
   <%= link_to '製品を表示', food_path(food), class: "inline-block mt-4 px-4 py-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600" %>
 </div>
