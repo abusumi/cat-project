@@ -1,46 +1,54 @@
-<div class="container p-5">
-  <div class="row">
-    <div class="col-md-10 offset-md-1">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td class="text-right" style="width: 30%;">お名前</td>
-            <td><%= @contact.name %></td>
-          </tr>
-          <tr>
-            <td class="text-right mt-3" style="width: 30%;">メールアドレス</td>
-            <td><%= @contact.email %></td>
-          </tr>
-          <tr>
-            <td class="text-right mt-3" style="width: 30%;">件名</td>
-            <td><%= @contact.title %></td>
-          </tr>
-          <tr>
-            <td class="text-right mt-3">メッセージ</td>
-            <td style="white-space: pre-wrap;"><%= @contact.message %></td>
-          </tr>
-        </tbody>
-      </table>
+<div class="flex bg-secondary rounded justify-center px-3 my-2 md:px-12 mx-6 md:mx-44 mb-12">
+  <div class="container p-5 bg-white rounded-lg shadow-md">
+    <div class="flex flex-col justify-center">
+      <div class="col-md-8">
+        <h2 class="text-center mb-4 text-gray-800 font-bold">入力内容確認</h2>
 
-      <div class="d-flex">
-        <div class="mr-3">
-        <%= form_with model: @contact, method: :post, data: { turbo: false }, local: true do|f| %>
-          <%= f.hidden_field :name %>
-          <%= f.hidden_field :email %>
-          <%= f.hidden_field :title %>
-          <%= f.hidden_field :message %>
-          <div><%= f.submit '送信', class: "btn btn-success" %></div>
-        <% end %>
-        </div>
+        <table class="table table-bordered mb-4">
+          <tbody>
+            <tr>
+              <td class="text-right" style="width: 30%; font-weight: bold;">お名前</td>
+              <td><%= @contact.name %></td>
+            </tr>
+            <tr>
+              <td class="text-right" style="width: 30%; font-weight: bold;">メールアドレス</td>
+              <td><%= @contact.email %></td>
+            </tr>
+            <tr>
+              <td class="text-right" style="width: 30%; font-weight: bold;">件名</td>
+              <td><%= @contact.title %></td>
+            </tr>
+            <tr>
+              <td class="text-right" style="font-weight: bold;">メッセージ</td>
+              <td style="white-space: pre-wrap; word-wrap: break-word;"><%= @contact.message %></td>
+            </tr>
+          </tbody>
+        </table>
 
-        <div>
-        <%= form_with model: @contact, url: back_contacts_path, data: { turbo: false }, local: true do |f| %>
-          <%= f.hidden_field :name %>
-          <%= f.hidden_field :email %>
-          <%= f.hidden_field :title %>
-          <%= f.hidden_field :message %>
-          <div><%= f.submit '入力画面に戻る', class: "btn btn-info" %></div>
-        <% end %>
+        <div class="d-flex justify-content-between">
+          <div>
+            <%= form_with model: @contact, method: :post, data: { turbo: false }, local: true do |f| %>
+              <%= f.hidden_field :name %>
+              <%= f.hidden_field :email %>
+              <%= f.hidden_field :title %>
+              <%= f.hidden_field :message %>
+              <div class="text-center my-2">
+                <%= f.submit '送信', class: "btn btn-success btn-lg px-5 py-2 rounded-lg shadow-md hover:bg-green-600 transition duration-300" %>
+              </div>
+            <% end %>
+          </div>
+
+          <div>
+            <%= form_with model: @contact, url: back_contacts_path, data: { turbo: false }, local: true do |f| %>
+              <%= f.hidden_field :name %>
+              <%= f.hidden_field :email %>
+              <%= f.hidden_field :title %>
+              <%= f.hidden_field :message %>
+              <div class="text-center">
+                <%= f.submit '入力画面に戻る', class: "btn btn-info btn-lg px-5 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300" %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
