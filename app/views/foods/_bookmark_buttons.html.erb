@@ -3,7 +3,7 @@
     <% if current_user.bookmark?(food) %>
       <%= render 'unbookmark', { food: food } %>
     <% else %>
-      <%= link_to '<span class="material-icons">bookmark</span>'.html_safe, bookmark_food_path(food), method: :post, class: 'btn btn-primary', title: 'ブックマーク' %>
+      <%= render 'bookmark', { food: food } %>
     <% end %>
   <% else %>
     <%= link_to '<span class="material-icons">bookmark_border</span>'.html_safe, new_user_session_path,  title: 'ログインしてブックマーク' %>
