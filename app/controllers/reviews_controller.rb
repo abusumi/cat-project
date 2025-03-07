@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_food, only: [ :new, :create, :index ]
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [ :new, :create ]
 
   def new
     @review = @food.reviews.new
