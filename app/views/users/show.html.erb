@@ -37,7 +37,7 @@
   <h2 class="text-2xl mb-4 font-semibold text-gray-800">前回の計算結果</h2>
 
   <% if @last_calculation.present? %>
-    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full max-w-3xl mb-6 mx-auto">
+    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full max-w-2xl mx-4 mb-6">
       <p class="text-lg mb-2">前回選択したメーカー: <span class="font-semibold text-gray-900"><%= @last_calculation.main_brand.name %></span></p>
       <p class="text-lg mb-2">前回選択したフード: <span class="font-semibold text-gray-900"><%= @last_calculation.main_food.name %></span></p>
       <p class="text-lg mb-2">前回選択したサブメーカー: <span class="font-semibold text-gray-900"><%= @last_calculation.sub_brand&.name %></span></p>
