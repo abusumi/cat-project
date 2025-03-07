@@ -4,8 +4,8 @@
   <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-md mb-4">
     <!-- ユーザー情報 -->
     <div class="flex items-center">
-      <%= image_tag review.user.profile.attached? ? review.user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-gray-300 mr-3' %>
-      <p class="text-lg font-semibold text-gray-800"><%= review.user.name %></p>
+      <%= link_to image_tag(review.user.profile.attached? ? review.user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-gray-300 mr-3'), user_path(review.user) %>
+      <%= link_to review.user.name, user_path(review.user), class: 'text-lg font-semibold text-gray-800' %>
     </div>
     <!-- 星評価 -->
     <div class="flex items-center mt-2 mb-2">
