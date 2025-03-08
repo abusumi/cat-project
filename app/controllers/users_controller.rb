@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @cats = @user.cats
-    @last_calculation = current_user.feeding_calculations.includes(:main_food, :cat).order(created_at: :desc).first
+    @calculation_result = current_user.feeding_calculations.includes(:main_food).order(created_at: :desc)
   end
 
   def edit

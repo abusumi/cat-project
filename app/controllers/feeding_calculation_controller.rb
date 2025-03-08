@@ -107,4 +107,17 @@ class FeedingCalculationController < ApplicationController
     flash[:notice] = "給与量の計算結果を保存しました！"
     redirect_to user_path(current_user.id)
   end
+
+  def destroy
+    @calculation_result = current_user.feeding_calculations.find_by(id: params[:id])
+  
+    if @calculation_result
+      @calculation_result.destroy
+      flash[:notice] = "計算結果を削除しました"
+    else
+      flash[:alert] = "削除に失敗しました"
+    end
+  
+    redirect_to user_path(current_user)
+  end
 end

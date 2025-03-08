@@ -31,6 +31,9 @@ Rails.application.routes.draw do
       post :save      # 結果を保存 (ログインユーザーのみ)
       get :calculate
     end
+    member do
+      delete :destroy
+    end
   end
 
   resources :brands, only: [ :index, :show ] do
