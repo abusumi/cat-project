@@ -110,14 +110,14 @@ class FeedingCalculationController < ApplicationController
 
   def destroy
     @calculation_result = current_user.feeding_calculations.find_by(id: params[:id])
-  
+
     if @calculation_result
       @calculation_result.destroy
       flash[:notice] = "計算結果を削除しました"
     else
       flash[:alert] = "削除に失敗しました"
     end
-  
+
     redirect_to user_path(current_user)
   end
 end
