@@ -51,10 +51,13 @@ ja:
         message: "ログイン失敗が繰り返されたため、アカウントはロックされています。"
     passwords:
       edit:
-        change_my_password: "パスワードを変更する"
+        title: "パスワードを変更する"
         change_your_password: "パスワードを変更"
         confirm_new_password: "確認用新しいパスワード"
         new_password: "新しいパスワード"
+        characters_minimum: "文字以上"
+        show_password: "新しいパスワードを見る"
+        show_password_confirmation: "確認用新しいパスワードを見る"
       new:
         title: "パスワード再設定"
         forgot_your_password: "パスワードを忘れましたか?"

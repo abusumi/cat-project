@@ -1,32 +1,57 @@
-<h2 class="text-center mb-6 text-2xl">1日の給与量を計算する</h2>
-<div class="flex justify-center">
-  <%= form_with url: calculate_feeding_calculation_index_path, method: :post, local: true, data: { turbo: false } do |form| %>
-    <div class="text-xl mb-6">
-      <%= form.label :main_brand_id, "メインフードのメーカー" %>
-      <%= select_tag :main_brand_id, options_from_collection_for_select(Brand.all, :id, :name), prompt: "メーカーを選択", id: "main_brand_select" %>
+<h2 class="text-center mb-6 text-2xl font-semibold">1日の給与量を計算する</h2>
+<div class="flex justify-center mb-4">
+  <%= form_with url: calculate_feeding_calculation_index_path, method: :post, local: true, data: { turbo: false }, class: "flex flex-col items-center max-w-lg w-full bg-white p-6 rounded-lg shadow-lg" do |form| %>
+    
+    <!-- メインフードのメーカー -->
+    <div class="text-xl mb-4 w-full">
+      <%= form.label :main_brand_id, "メインフードのメーカー", class: "block font-medium mb-2" %>
+      <%= select_tag :main_brand_id, options_from_collection_for_select(Brand.all, :id, :name),
+        prompt: "メーカーを選択",
+        id: "main_brand_select",
+        class: "border p-3 rounded-md w-full focus:ring-2 focus:ring-blue-400" %>
     </div>
 
-    <div class="text-xl mb-6">
-      <%= form.label :main_food_id, "メインフード" %>
-      <%= select_tag :main_food_id, "", prompt: "フードを選択", id: "main_food_select", name: "main_food_id" %>
+    <!-- メインフード -->
+    <div class="text-xl mb-4 w-full">
+      <%= form.label :main_food_id, "メインフード", class: "block font-medium mb-2" %>
+      <%= select_tag :main_food_id, "", 
+        prompt: "フードを選択",
+        id: "main_food_select",
+        name: "main_food_id",
+        class: "border p-3 rounded-md w-full focus:ring-2 focus:ring-blue-400" %>
     </div>
 
-    <div class="text-xl mb-6">
-      <%= form.label :sub_brand_id, "サブフードのメーカー (任意)" %>
-      <%= select_tag :sub_brand_id, options_from_collection_for_select(Brand.all, :id, :name), prompt: "メーカーを選択", id: "sub_brand_select" %>
+    <!-- サブフードのメーカー (任意) -->
+    <div class="text-xl mb-4 w-full">
+      <%= form.label :sub_brand_id, "サブフードのメーカー (任意)", class: "block font-medium mb-2" %>
+      <%= select_tag :sub_brand_id, options_from_collection_for_select(Brand.all, :id, :name),
+        prompt: "メーカーを選択",
+        id: "sub_brand_select",
+        class: "border p-3 rounded-md w-full focus:ring-2 focus:ring-blue-400" %>
     </div>
 
-    <div class="text-xl mb-6">
-      <%= form.label :sub_food_id, "サブフード (任意)" %>
-      <%= select_tag :sub_food_id, "", prompt: "フードを選択", id: "sub_food_select", name: "sub_food_id" %>
+    <!-- サブフード (任意) -->
+    <div class="text-xl mb-4 w-full">
+      <%= form.label :sub_food_id, "サブフード (任意)", class: "block font-medium mb-2" %>
+      <%= select_tag :sub_food_id, "", 
+        prompt: "フードを選択",
+        id: "sub_food_select",
+        name: "sub_food_id",
+        class: "border p-3 rounded-md w-full focus:ring-2 focus:ring-blue-400" %>
     </div>
 
-    <div class="text-xl mb-6 flex items-center">
-      <%= form.label :weight, "体重" %>
-      <%= form.text_field :weight, value: nil, placeholder: "例: 4.8", required: true, class: "ml-2" %>
-      <span class="ml-2">kg</span>
+    <!-- 体重 -->
+    <div class="text-xl mb-6 w-full flex items-center">
+      <%= form.label :weight, "体重", class: "font-medium mr-3" %>
+      <%= form.text_field :weight, value: nil, placeholder: "例: 4.8", required: true,
+        class: "border p-3 rounded-md w-24 focus:ring-2 focus:ring-blue-400" %>
+      <span class="ml-2 text-gray-600">kg</span>
     </div>
 
-    <button type="submit" class="btn btn-wide text-xl bg-pink-200 text-orange-700 hover:bg-pink-100">計算する</button>
+    <!-- 送信ボタン -->
+    <button type="submit" class="w-full py-3 text-lg bg-pink-200 text-orange-700 rounded-md hover:bg-pink-300 transition">
+      計算する
+    </button>
+
   <% end %>
 </div>

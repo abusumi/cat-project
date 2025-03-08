@@ -1,33 +1,38 @@
-<div class="container-fluid light-blue-container p-5">
-  <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <div class="mb-2">
-        <%= flash[:alert] %>
-      </div>
-      <%= form_with model: @contact, url: confirm_contacts_path,  data: { turbo: false }, local: true do |f| %>
-        <div class="form-group">
-          <%= f.label :name, 'お名前' %><span class="text-danger">*</span>
-          <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+<div class="container-fluid p-5 bg-light max-w-2xl mx-auto my-2 bg-white p-8 rounded-lg shadow-md">
+  <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">お問い合わせ</h1>
+  <!-- エラーメッセージの表示 -->
+  <div class="mb-3 text-center">
+    <%= flash[:alert] %>
+  </div>
+  <div class="flex bg-secondary rounded justify-center px-3 md:px-12 mx-6 md:mx-44 mb-12">
+    <div class="flex flex-col w-full mt-6 mb-10 md:mb-6 mx-4 md:mx-6">
+      
+      <%= form_with model: @contact, url: confirm_contacts_path, data: { turbo: false }, local: true do |f| %>
+        
+        <div class="form-group mb-4">
+          <%= f.label :name, 'お名前', class: 'font-weight-bold text-secondary' %><span class="text-danger">*</span>
+          <%= f.text_field :name, autofocus: true, class: 'bg-white border border-gray-300 text-sm w-full rounded-lg focus:ring-primary focus:border-primary block p-2.5' %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :email, 'メールアドレス' %><span class="text-danger">*</span>
-          <%= f.email_field :email, class: 'form-control' %>
+        <div class="form-group mb-4">
+          <%= f.label :email, 'メールアドレス', class: 'font-weight-bold text-secondary' %><span class="text-danger">*</span>
+          <%= f.email_field :email, class: 'bg-white border border-gray-300 text-sm w-full rounded-lg focus:ring-primary focus:border-primary block p-2.5' %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :title, '件名' %><span class="text-danger">*</span>
-          <%= f.text_area :title, class: 'form-control' %>
+        <div class="form-group mb-4">
+          <%= f.label :title, '件名', class: 'font-weight-bold text-secondary' %><span class="text-danger">*</span>
+          <%= f.text_area :title, class: 'bg-white border border-gray-300 text-sm w-full rounded-lg focus:ring-primary focus:border-primary block p-2.5', rows: 3 %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :message, 'メッセージ' %><span class="text-danger">*</span>
-          <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+        <div class="form-group mb-4">
+          <%= f.label :message, 'メッセージ', class: 'font-weight-bold text-secondary' %><span class="text-danger">*</span>
+          <%= f.text_area :message, size: '10x10', class: 'bg-white border border-gray-300 text-sm w-full rounded-lg focus:ring-primary focus:border-primary block p-2.5', rows: 5 %>
         </div>
 
-        <div>
-          <%= f.submit '入力内容確認', class: "btn btn-outline-info bg-white" %>
+        <div class="text-center">
+          <%= f.submit '入力内容確認', class: "btn btn-info btn-lg px-5 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300" %>
         </div>
+
       <% end %>
     </div>
   </div>

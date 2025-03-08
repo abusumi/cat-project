@@ -1,22 +1,26 @@
 <div class="container mx-auto p-6">
   <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
-    <h2 class="text-2xl font-bold mb-4"><%= @cat.name %></h2>
-    <div class="relative w-full h-48">
-      <%= image_tag(@cat.cat_profile.attached? ? @cat.cat_profile : 'pets.png', class: "w-full h-full object-cover") %>
+    <div class="relative w-full h-48 mb-4">
+      <%= image_tag(@cat.cat_profile.attached? ? @cat.cat_profile : 'pets.png', class: "w-full h-full object-cover rounded-lg shadow-md") %>
     </div>
-    <p class="text-gray-700 break-wordsp"><%= @cat.cat_introduction %> </p>
-    <p class="text-gray-700">体重: <%= @cat.weight %> kg</p>
-    <p class="text-gray-700">投稿者: <%= @cat.user.name %></p>
 
+    <div class="flex items-center">
+      <%= link_to image_tag(@cat.user.profile.attached? ? @cat.user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-gray-300 mr-3'), user_path(@cat.user) %>
+      <%= link_to @cat.user.name, user_path(@cat.user), class: 'text-lg font-semibold text-gray-800 break-words' %>
+    </div>
+    <h2 class="text-2xl font-bold mb-4 t text-gray-800 break-words"><%= @cat.name %></h2>
+    <p class="text-gray-700 mb-4 break-words"><%= @cat.cat_introduction %></p>
+    <p class="text-gray-700 mb-4">体重: <span class="font-semibold"><%= @cat.weight %> kg</span></p>
+    <p class="text-sm text-gray-500">登録日: <%= @cat.created_at.strftime('%Y-%m-%d') %></p>
     <% if @cat.user == current_user %>
       <div class="mt-4 flex justify-between">
         <%= link_to '編集', edit_user_cat_path(current_user, @cat), class: "px-4 py-2 bg-yellow-500 text-white rounded-lg" %>
         <%= button_to '削除', user_cat_path(current_user, @cat), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "px-4 py-2 bg-red-600 text-white rounded-lg" %>
       </div>
     <% end %>
-    
+
     <div class="mt-4 flex justify-between items-center">
-      <%= link_to '戻る', user_path(@user), class: "px-4 py-2 bg-gray-500 text-white rounded-lg" %>
+      <%= link_to '戻る', :back, class: "px-4 py-2 bg-gray-500 text-white rounded-lg" %>
       <a href="https://twitter.com/intent/tweet?text=ここにシェアしたいテキストを入れる" target="_blank" class="flex items-center text-blue-500 hover:text-blue-700 transition-colors duration-200">
         <i class="fa-brands fa-x-twitter text-3xl"></i>
       </a>

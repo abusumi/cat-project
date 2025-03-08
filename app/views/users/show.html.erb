@@ -1,25 +1,56 @@
 <div class="flex flex-col items-center">
-  <h1 class="text-2xl font-bold mb-4">マイページ</h1>
-  <div class="mb-4">
-    <%= render 'shared/user_card' %>
-    <%= render 'shared/cat_card' %>
-    <%= link_to '猫を登録する', new_user_cat_path(current_user) %>
+  <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">ユーザーページ</h1>
+
+  <!-- コンテンツを中央に配置 -->
+  <div class="w-full max-w-3xl rounded-lg p-6 mb-6 mx-auto text-center">
+    <div class="bg-white w-[300px] p-5 text-center mx-auto">
+      <%= image_tag @user.profile.attached? ? @user.profile : 'account.png', class: 'w-14 h-14 rounded-full object-cover border border-300 mx-auto' %>
+      <div class="font-bold">
+        <p class="text-2xl"><%= @user.name %></p>
+      </div>
+      <div class="bg-gray-50 text-sm mb-5 p-5">
+        <p><%= @user.self_introduction %></p>
+      </div>
+      <% if @user == current_user %>
+        <div class="flex justify-center">
+          <%= link_to edit_user_path, class: "flex items-center bg-blue-500 text-white py-2 px-4 rounded shadow hover:bg-blue-600 transition duration-200" do %>
+            <span class="material-icons">edit</span>
+            <span class="ml-1">編集</span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <p class="text-xl mb-4 my-4 font-semibold text-gray-700">登録済みペット</p>
+
+    <!-- cat_card の表示 -->
+    <div class="w-full">
+      <%= render 'shared/cat_card' %>
+    </div>
+
+    <!-- 「猫を登録する」ボタンを中央揃え -->
+    <div class="mt-4 text-center">
+      <%= link_to '猫を登録する', new_user_cat_path(current_user), class: 'px-4 py-2 bg-blue-500 text-2xl text-white rounded-md hover:bg-blue-600 transition-colors duration-200' %>
+    </div>
   </div>
-  <h2 class="text-xl mb-2">前回の計算結果</h2>
+
+  <h2 class="text-2xl mb-4 font-semibold text-gray-800">前回の計算結果</h2>
 
   <% if @last_calculation.present? %>
-    <div class="bg-white shadow-md rounded-lg p-5 flex flex-col items-center">
-      <p class="text-lg">前回選択したメーカー: <span class="font-semibold"><%= @last_calculation.main_brand.name %></span></p>
-      <p class="text-lg">前回選択したフード: <span class="font-semibold"><%= @last_calculation.main_food.name %></span></p>
-      <p class="text-lg">前回選択したサブメーカー: <span class="font-semibold"><%= @last_calculation.sub_brand&.name %></span></p>
-      <p class="text-lg">前回選択したサブフード: <span class="font-semibold"><%= @last_calculation.sub_food&.name %></span></p>
-      <p class="text-lg">体重: <span class="font-semibold"><%= @last_calculation.cat.weight %></span> kg</p>
-      <p class="text-lg">メインフードの量: <span class="font-semibold"><%= @last_calculation.main_food_amount %></span> g</p>
-      <p class="text-lg">サブフードの量: <span class="font-semibold"><%= @last_calculation.sub_food_amount %></span> g</p>
-      <p class="text-lg">合計カロリー: <span class="font-semibold"><%= @last_calculation.total_daily_calories %></span> kcal</p>
-      <p class="text-sm text-gray-500">作成日時: <%= @last_calculation.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
+    <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center w-full max-w-2xl mx-4 mb-6">
+      <p class="text-lg mb-2">前回選択したメーカー: <span class="font-semibold text-gray-900"><%= @last_calculation.main_brand.name %></span></p>
+      <p class="text-lg mb-2">前回選択したフード: <span class="font-semibold text-gray-900"><%= @last_calculation.main_food.name %></span></p>
+      <p class="text-lg mb-2">前回選択したサブメーカー: <span class="font-semibold text-gray-900"><%= @last_calculation.sub_brand&.name %></span></p>
+      <p class="text-lg mb-2">前回選択したサブフード: <span class="font-semibold text-gray-900"><%= @last_calculation.sub_food&.name %></span></p>
+      <p class="text-lg mb-2">体重: <span class="font-semibold text-gray-900"><%= @last_calculation.cat.weight %></span> kg</p>
+      <p class="text-lg mb-2">メインフードの量: <span class="font-semibold text-gray-900"><%= @last_calculation.main_food_amount %></span> g</p>
+      <p class="text-lg mb-2">サブフードの量: <span class="font-semibold text-gray-900"><%= @last_calculation.sub_food_amount %></span> g</p>
+      <p class="text-lg mb-2">合計カロリー: <span class="font-semibold text-gray-900"><%= @last_calculation.total_daily_calories %></span> kcal</p>
+      <p class="text-sm text-gray-500 mt-4">作成日時: <%= @last_calculation.created_at.strftime('%Y-%m-%d %H:%M:%S') %></p>
     </div>
   <% else %>
-    <p class="text-red-500 mt-4">計算結果はまだありません。</p>
+    <p class="bg-white shadow-md text-red-500 p-4 rounded-md mt-4 w-full max-w-3xl mx-auto text-center">
+      計算結果はまだありません。
+    </p>
   <% end %>
 </div>

@@ -1,7 +1,11 @@
 <div class='ms-auto'>
-  <% if current_user.bookmark?(food) %>
-    <%= render 'unbookmark', { food: food } %>
+  <% if user_signed_in? %>
+    <% if current_user.bookmark?(food) %>
+      <%= render 'unbookmark', { food: food } %>
+    <% else %>
+      <%= render 'bookmark', { food: food } %>
+    <% end %>
   <% else %>
-    <%= render 'bookmark', { food: food } %>
+    <%= button_to '<span class="material-icons">bookmark_border</span>'.html_safe, new_user_session_path,  title: 'ログインしてブックマーク' %>
   <% end %>
 </div>
