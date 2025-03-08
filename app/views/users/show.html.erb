@@ -42,7 +42,7 @@
       <p class="text-lg mb-2">前回選択したフード: <span class="font-semibold text-gray-900"><%= @last_calculation.main_food.name %></span></p>
       <p class="text-lg mb-2">前回選択したサブメーカー: <span class="font-semibold text-gray-900"><%= @last_calculation.sub_brand&.name %></span></p>
       <p class="text-lg mb-2">前回選択したサブフード: <span class="font-semibold text-gray-900"><%= @last_calculation.sub_food&.name %></span></p>
-      <p class="text-lg mb-2">体重: <span class="font-semibold text-gray-900"><%= @last_calculation.cat.weight %></span> kg</p>
+      <p class="text-lg mb-2">体重: <span class="font-semibold text-gray-900"><%= @last_calculation.weight %></span> kg</p>
       <p class="text-lg mb-2">メインフードの量: <span class="font-semibold text-gray-900"><%= @last_calculation.main_food_amount %></span> g</p>
       <p class="text-lg mb-2">サブフードの量: <span class="font-semibold text-gray-900"><%= @last_calculation.sub_food_amount %></span> g</p>
       <p class="text-lg mb-2">合計カロリー: <span class="font-semibold text-gray-900"><%= @last_calculation.total_daily_calories %></span> kcal</p>

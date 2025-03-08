@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_10_162124) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_08_013849) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,7 +78,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_10_162124) do
   end
 
   create_table "feeding_calculations", force: :cascade do |t|
-    t.bigint "cat_id", null: false
     t.bigint "main_food_id"
     t.bigint "sub_food_id"
     t.decimal "main_food_amount"
@@ -88,8 +87,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_10_162124) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "brand_id"
+    t.decimal "weight", precision: 3, scale: 1
     t.index ["brand_id"], name: "index_feeding_calculations_on_brand_id"
-    t.index ["cat_id"], name: "index_feeding_calculations_on_cat_id"
     t.index ["main_food_id"], name: "index_feeding_calculations_on_main_food_id"
     t.index ["sub_food_id"], name: "index_feeding_calculations_on_sub_food_id"
     t.index ["user_id"], name: "index_feeding_calculations_on_user_id"
@@ -150,7 +149,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_10_162124) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "cats", "users"
   add_foreign_key "feeding_calculations", "brands"
-  add_foreign_key "feeding_calculations", "cats"
   add_foreign_key "feeding_calculations", "foods", column: "main_food_id"
   add_foreign_key "feeding_calculations", "foods", column: "sub_food_id"
   add_foreign_key "feeding_calculations", "users"

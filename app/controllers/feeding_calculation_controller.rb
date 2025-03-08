@@ -91,13 +91,10 @@ class FeedingCalculationController < ApplicationController
       main_rer.round(2)  # メインフードのみ
     end
 
-    # 猫情報を保存
-    cat = current_user.cats.create(weight: weight) # name: cat_name,
-
     # 給与計算結果を保存
     FeedingCalculation.create!(
       user: current_user,
-      cat: cat,
+      weight: weight,
       brand_id: main_brand.id,
       main_food_id: main_food.id,
       brand_id: sub_brand&.id,
