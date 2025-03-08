@@ -41,7 +41,7 @@
   <% end %>
 
   <!-- ーまたはー アカウント登録のボタン -->
-  <div class="mt-6 flex justify-center items-center divider text-xs border-b border-gray-300 pb-4">または</div>
+  <div class="mt-6 flex justify-center items-center divider text-xs pb-4">または</div>
     <!-- Googleログインボタン -->
     <div class="mt-1">
       <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false } do %>
