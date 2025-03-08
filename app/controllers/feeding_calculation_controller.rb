@@ -91,13 +91,10 @@ class FeedingCalculationController < ApplicationController
       main_rer.round(2)  # メインフードのみ
     end
 
-    # 猫情報を保存
-    cat = current_user.cats.create(weight: weight) # name: cat_name,
-
     # 給与計算結果を保存
     FeedingCalculation.create!(
       user: current_user,
-      cat: cat,
+      weight: weight,
       brand_id: main_brand.id,
       main_food_id: main_food.id,
       brand_id: sub_brand&.id,
@@ -109,5 +106,18 @@ class FeedingCalculationController < ApplicationController
 
     flash[:notice] = "給与量の計算結果を保存しました！"
     redirect_to user_path(current_user.id)
+  end
+
+  def destroy
+    @calculation_result = current_user.feeding_calculations.find_by(id: params[:id])
+
+    if @calculation_result
+      @calculation_result.destroy
+      flash[:notice] = "計算結果を削除しました"
+    else
+      flash[:alert] = "削除に失敗しました"
+    end
+
+    redirect_to user_path(current_user)
   end
 end
