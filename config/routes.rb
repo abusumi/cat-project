@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :cats, only: [ :new, :create, :edit, :update, :show, :destroy ]
   end
 
-  resources :cats, only: [:index]
+  resources :cats, only: [ :index ]
 
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: redirect("/")

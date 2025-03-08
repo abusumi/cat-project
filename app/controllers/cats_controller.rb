@@ -15,7 +15,7 @@ class CatsController < ApplicationController
   end
 
   def index
-    @cat = Cat.all.order(created_at: :desc)
+    @cats = Cat.includes(:user).order(created_at: :desc)
   end
 
   def show
