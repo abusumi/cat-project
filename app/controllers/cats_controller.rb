@@ -65,7 +65,7 @@ class CatsController < ApplicationController
                     title: cat.name,
                     description: 'ユーザーによるペットの投稿です',
                     type: 'website',
-                    url: "#{request.base_url}/cats/#{cat.id}",
+                    url: "#{request.base_url}/users/#{cat.user_id}/cats/#{cat.id}",
                     image: image_url,
                     locale: 'ja-JP'
                   },
