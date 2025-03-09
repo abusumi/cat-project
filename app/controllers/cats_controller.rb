@@ -1,5 +1,5 @@
 class CatsController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: [ :index ]
 
   def new
     @cat = @user.cats.build
@@ -12,6 +12,10 @@ class CatsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def index
+    @cats = Cat.includes(:user).order(created_at: :desc)
   end
 
   def show
