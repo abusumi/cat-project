@@ -22,14 +22,13 @@ module ApplicationHelper
         description: :description,
         type: "website",
         url: "catfood-mate.com",
-        image: image_url("ogp.png"),
+        image: request.path.include?("cats") ? image_url("ogp2.png") : image_url("ogp.png"),
         local: "ja-JP"
       },
-      # Twitter用の設定を個別で設定する
       twitter: {
-        card: "summary_large_image", # Twitterで表示する場合は大きいカードにする
+        card: "summary_large_image",
         site: "CatFoodMat45083",
-        image: image_url("ogp.png")
+        image: request.path.include?("cats") ? image_url("ogp2.png") : image_url("ogp.png")
       }
     }
   end
