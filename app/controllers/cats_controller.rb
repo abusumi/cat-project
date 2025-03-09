@@ -58,7 +58,7 @@ class CatsController < ApplicationController
   end
 
   def prepare_meta_tags(cat)
-    image_url = "#{request.base_url}/ogp/#{cat.id}.png"
+    image_url = "#{request.base_url}/ogp2/#{cat.id}.png"
   
     set_meta_tags og: {
                     site_name: 'CatFoodMate',
@@ -66,13 +66,13 @@ class CatsController < ApplicationController
                     description: 'ユーザーによるペットの投稿です',
                     type: 'website',
                     url: "#{request.base_url}/users/#{cat.user_id}/cats/#{cat.id}",
-                    image: image_url("ogp2.png"),
+                    image: image_url,
                     locale: 'ja-JP'
                   },
                   twitter: {
                     card: 'summary_large_image',
                     site: '@CatFoodMat45083',
-                    image: image_url("ogp2.png")
+                    image: image_url
                   }
   end  
 end
