@@ -66,13 +66,13 @@ class CatsController < ApplicationController
                     description: 'ユーザーによるペットの投稿です',
                     type: 'website',
                     url: "#{request.base_url}/users/#{cat.user_id}/cats/#{cat.id}",
-                    image: image_url,
+                    image: image_url("ogp2.png"),
                     locale: 'ja-JP'
                   },
                   twitter: {
                     card: 'summary_large_image',
                     site: '@CatFoodMat45083',
-                    image: image_url
+                    image: image_url("ogp2.png")
                   }
   end  
 end

@@ -25,7 +25,7 @@
       <div class="text-gray-600">
         <% prepare_meta_tags @cat %>
         <% tweet_text = "#{@cat.name}のプロフィールをチェック！" %>
-        <% tweet_url = "https://twitter.com/intent/tweet?text=#{URI.encode_www_form_component(tweet_text)}&url=#{request.base_url}/cats/#{@cat.id}" %>
+        <% tweet_url = "https://twitter.com/intent/tweet?text=#{URI.encode_www_form_component(tweet_text)}&url=#{request.base_url}/users/#{cat.user_id}/cats/#{cat.id}" %>
         <%= link_to tweet_url, target: '_blank', class: "flex items-center text-blue-500 hover:text-blue-700 transition-colors duration-200", data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
           <i class="fa-brands fa-x-twitter text-3xl"></i>
         <% end %>
