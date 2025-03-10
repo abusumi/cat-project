@@ -13,7 +13,7 @@ module ApplicationHelper
       reverse: true,
       charset: "utf-8",
       description: "Cat Food Mateでは「キャットフード・体重」を入力すると1日の給与量を算出してくれます。",
-      keywords: "猫,キャットフード,給与量,2種類のキャットフード",
+      keywords: "猫,キャットフード,給与量,2種類のキャットフード,ペット,キャット",
       canonical: "catfood-mate.com",
       separator: "|",
       og: {
@@ -21,15 +21,20 @@ module ApplicationHelper
         title: :title,
         description: :description,
         type: "website",
-        url: "https://catfood-mate.com",
-        image: request.path.include?("cats") ? ogp_image_url(cat.id) : image_url("ogp.png"),
-        local: "ja-JP"
+        url: "catfood-mate.com",
+        image: image_url("ogp.png"),
+        locale: "ja-JP"
       },
       twitter: {
-        card: "summary_large_image",
+        card: "summary_large_image", # Twitterで表示する場合は大きいカードにする
         site: "CatFoodMat45083",
-        image: request.path.include?("cats") ? ogp_image_url(cat.id) : image_url("ogp.png")
+        image: image_url("ogp.png")
       }
-    }
+    }.tap do |meta_tags|
+      if @cat
+        meta_tags[:og][:image] = "#{request.base_url}/ogp2/#{@cat.id}.png"
+        meta_tags[:twitter][:image] = "#{request.base_url}/ogp2/#{@cat.id}.png"
+      end
+    end
   end
 end
