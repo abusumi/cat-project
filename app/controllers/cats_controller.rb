@@ -59,7 +59,7 @@ class CatsController < ApplicationController
   end
 
   def prepare_meta_tags(cat)
-    image_url = "#{request.base_url}/ogp2/#{cat.id}.png"
+    image_url = "#{request.base_url}/images/ogp.png?cat_id=#{cat.id}"
   
     set_meta_tags og: {
                     site_name: 'CatFoodMate',
