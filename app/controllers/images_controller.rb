@@ -5,4 +5,10 @@ class ImagesController < ApplicationController
     image = OgpCreator.build(cat.name, user.name).tempfile.open.read
     send_data image, type: 'image/png', disposition: 'inline'
   end
+
+  private
+
+  def ogp_params
+    params.permit(:text)
+  end
 end

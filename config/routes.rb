@@ -27,8 +27,6 @@ Rails.application.routes.draw do
   get "terms_of_service" => "terms_of_service#index"
   get "privacy_policies" => "privacy_policies#index"
   get 'images/ogp.png', to: 'images#ogp', as: 'images_ogp'
-  get '/ogp2/:id.png', to: 'ogp_creator#build'
-  get 'ogp_image/:cat_id', to: 'images#ogp', as: 'ogp_image'
 
 
 
