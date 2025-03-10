@@ -23,18 +23,14 @@ module ApplicationHelper
         type: "website",
         url: "catfood-mate.com",
         image: image_url("ogp.png"),
-        locale: "ja-JP"
+        local: "ja-JP"
       },
+      # Twitter用の設定を個別で設定する
       twitter: {
         card: "summary_large_image", # Twitterで表示する場合は大きいカードにする
         site: "CatFoodMat45083",
         image: image_url("ogp.png")
       }
-    }.tap do |meta_tags|
-      if @cat
-        meta_tags[:og][:image] = "#{request.base_url}/ogp2/#{@cat.id}.png"
-        meta_tags[:twitter][:image] = "#{request.base_url}/ogp2/#{@cat.id}.png"
-      end
-    end
+    }
   end
 end
