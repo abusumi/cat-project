@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "terms_of_service" => "terms_of_service#index"
   get "privacy_policies" => "privacy_policies#index"
+  get "images/ogp.png", to: "images#ogp", as: "images_ogp"
+
+
 
   resources :feeding_calculation, only: [ :new ] do
     collection do

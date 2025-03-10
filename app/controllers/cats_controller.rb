@@ -1,5 +1,7 @@
 class CatsController < ApplicationController
+  before_action :set_user
   before_action :set_user, except: [ :index ]
+  helper_method :prepare_meta_tags
 
   def new
     @cat = @user.cats.build
@@ -20,6 +22,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
+    prepare_meta_tags(@cat)
   end
 
   def edit
@@ -53,5 +56,24 @@ class CatsController < ApplicationController
 
   def cat_params
     params.require(:cat).permit(:name, :weight, :cat_profile, :cat_introduction)
+  end
+
+  def prepare_meta_tags(cat)
+    image_url = "#{request.base_url}/images/ogp.png?cat_id=#{cat.id}"
+
+    set_meta_tags og: {
+                    site_name: "CatFoodMate",
+                    title: cat.name,
+                    description: "ユーザーによるペットの投稿です",
+                    type: "website",
+                    url: "#{request.base_url}/users/#{cat.user_id}/cats/#{cat.id}",
+                    image: image_url,
+                    locale: "ja-JP"
+                  },
+                  twitter: {
+                    card: "summary_large_image",
+                    site: "@CatFoodMat45083",
+                    image: image_url
+                  }
   end
 end

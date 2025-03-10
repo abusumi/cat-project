@@ -13,7 +13,7 @@ module ApplicationHelper
       reverse: true,
       charset: "utf-8",
       description: "Cat Food Mateでは「キャットフード・体重」を入力すると1日の給与量を算出してくれます。",
-      keywords: "猫,キャットフード,給与量,2種類のキャットフード",
+      keywords: "猫,キャットフード,給与量,2種類のキャットフード,ペット,キャット",
       canonical: "catfood-mate.com",
       separator: "|",
       og: {
