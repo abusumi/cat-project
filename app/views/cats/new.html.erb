@@ -1,27 +1,28 @@
-<p class="text-center text-2xl font-semibold text-gray-700 mt-4">猫を登録する</p>
-<div class="bg-white p-8 rounded-lg shadow-lg">
-  <div class="flex flex-col justify-center items-center mb-8">
-    <h1 class="text-3xl font-bold  text-center">猫プロフィール編集</h1>
+<div class="flex items-center justify-center">
+  <div class="w-full max-w-2xl bg-white p-8 my-2 rounded-lg shadow-md">
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-gray-800">猫を登録する</h1>
+    </div>
+    <%= form_with(model: @cat, url: user_cats_path(@user), method: :post, data: { turbo: false }, class: "space-y-6") do |f| %>
+      <div>
+        <%= f.label :name, class: "block text-lg font-medium text-gray-700" %>
+        <%= f.text_field :name, class: "mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      </div>
+      <div>
+        <h2 class="text-lg font-medium text-gray-700">画像</h2>
+        <%= f.file_field :cat_profile, class: "mt-2 block w-full text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-white focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      </div>
+      <div>
+        <%= f.label :cat_introduction, class: "block text-lg font-medium text-gray-700" %>
+        <%= f.text_area :cat_introduction, class: "mt-2 w-full h-32 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" %>
+      </div>
+      <div>
+        <%= f.label :weight, class: "block text-lg font-medium text-gray-700" %>
+        <%= f.text_field :weight, class: "mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      </div>
+      <div class="flex justify-center">
+        <%= f.submit '登録する', class: "w-full sm:w-auto px-6 py-2 text-lg font-semibold text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md" %>
+      </div>
+    <% end %>
   </div>
-  <%= form_with(model: @cat, url: user_cats_path(@user), method: :post, data: { turbo: false }) do |f| %>
-    <div class="my-4">
-      <%= f.label :name, class: "block text-lg font-medium text-gray-700" %>
-      <%= f.text_field :name, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent" %>
-    </div>
-    <div class="my-4">
-      <h2 class="text-lg font-medium text-gray-700">画像</h2>
-      <%= f.file_field :cat_profile, class: "mt-2 block w-full text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-md p-2" %>
-    </div>
-    <div class="my-4">
-      <%= f.label :cat_introduction, class: "block text-lg font-medium text-gray-700" %>
-      <%= f.text_area :cat_introduction, class: "resize-none h-32 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent p-2" %>
-    </div>
-    <div class="my-4">
-      <%= f.label :weight, class: "block text-lg font-medium text-gray-700" %>
-      <%= f.text_field :weight, class: "mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent" %>
-    </div>
-    <div class="my-4">
-      <%= f.submit '登録する', class: 'w-full py-2 bg-accent font-semibold rounded-lg shadow-md hover:bg-accent-dark transition duration-300' %>
-    </div>
-  <% end %>
 </div>
