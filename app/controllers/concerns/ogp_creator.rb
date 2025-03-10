@@ -1,7 +1,7 @@
 class OgpCreator
   require 'mini_magick'  
-  BASE_IMAGE_PATH = './app/assets/images/ogp2.png'
-  FONT = './app/assets/fonts/ZenMaruGothic-Medium.ttf'
+  BASE_IMAGE_PATH = Rails.root.join('app', 'assets', 'images', 'ogp2.png')
+  FONT = Rails.root.join('app', 'assets', 'fonts', 'ZenMaruGothic-Medium.ttf')
   FONT_SIZE_LARGE = 80  # 猫の名前用
   FONT_SIZE_SMALL = 60  # 飼い主情報用
   FONT_COLOR = 'black'
