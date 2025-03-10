@@ -21,7 +21,7 @@ module ApplicationHelper
         title: :title,
         description: :description,
         type: "website",
-        url: "catfood-mate.com",
+        url: "https://catfood-mate.com",
         image: request.path.include?("cats") ? image_url("ogp2.png") : image_url("ogp.png"),
         local: "ja-JP"
       },
