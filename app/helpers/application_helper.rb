@@ -22,13 +22,13 @@ module ApplicationHelper
         description: :description,
         type: "website",
         url: "https://catfood-mate.com",
-        image: request.path.include?("cats") ? image_url("ogp2.png") : image_url("ogp.png"),
+        image: request.path.include?("cats") ? ogp_image_url(cat.id) : image_url("ogp.png"),
         local: "ja-JP"
       },
       twitter: {
         card: "summary_large_image",
         site: "CatFoodMat45083",
-        image: request.path.include?("cats") ? image_url("ogp2.png") : image_url("ogp.png")
+        image: request.path.include?("cats") ? ogp_image_url(cat.id) : image_url("ogp.png")
       }
     }
   end
