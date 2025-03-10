@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
     cat = Cat.find(params[:cat_id])
     user = cat.user
     image = OgpCreator.build(cat.name, user.name).tempfile.open.read
-    send_data image, type: 'image/png', disposition: 'inline'
+    send_data image, type: "image/png", disposition: "inline"
   end
 
   private

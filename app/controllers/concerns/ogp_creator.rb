@@ -1,11 +1,11 @@
 class OgpCreator
-  require 'mini_magick'  
-  BASE_IMAGE_PATH = Rails.root.join('app', 'assets', 'images', 'ogp2.png')
-  FONT = Rails.root.join('app', 'assets', 'fonts', 'ZenMaruGothic-Medium.ttf')
+  require "mini_magick"
+  BASE_IMAGE_PATH = Rails.root.join("app", "assets", "images", "ogp2.png")
+  FONT = Rails.root.join("app", "assets", "fonts", "ZenMaruGothic-Medium.ttf")
   FONT_SIZE_LARGE = 80  # 猫の名前用
   FONT_SIZE_SMALL = 60  # 飼い主情報用
-  FONT_COLOR = 'black'
-  ACCENT_COLOR = '#e07f34'  # オレンジ色のアクセントカラー
+  FONT_COLOR = "black"
+  ACCENT_COLOR = "#e07f34"  # オレンジ色のアクセントカラー
 
   MAX_NAME_LENGTH = 6  # 最大7文字まで表示（それ以上は「…」にする）
 
@@ -17,17 +17,17 @@ class OgpCreator
 
     image.combine_options do |config|
       config.font FONT
-      
+
       # 猫の名前（右上に配置）
       config.pointsize FONT_SIZE_LARGE
       config.fill FONT_COLOR
-      config.gravity 'Center'  # 中央配置
+      config.gravity "Center"  # 中央配置
       config.draw "text 280,-130 '#{cat_name}'"
-      
+
       # 「ちゃん」の位置
       config.fill ACCENT_COLOR
       config.pointsize FONT_SIZE_SMALL
-      config.gravity 'NorthEast'
+      config.gravity "NorthEast"
       config.draw "text 80,330 'ちゃん'"
     end
 
@@ -35,16 +35,16 @@ class OgpCreator
     image.combine_options do |config|
       config.font FONT
       config.pointsize FONT_SIZE_LARGE
-      
+
       # ユーザー名
       config.fill FONT_COLOR
-      config.gravity 'Center'
+      config.gravity "Center"
       config.draw "text -190,205 '#{user_name}'"
-      
+
       # 「さんのペット」
       config.fill ACCENT_COLOR
       config.pointsize FONT_SIZE_SMALL
-      config.gravity 'SouthEast'
+      config.gravity "SouthEast"
       config.draw "text 60,80 'さんのペット'"
     end
 
@@ -53,6 +53,6 @@ class OgpCreator
 
   # **7文字以上の場合に「…」で切り詰める**
   def self.truncate_text(text, max_length)
-    text.length > max_length ? text[0...max_length] + '…' : text
+    text.length > max_length ? text[0...max_length] + "…" : text
   end
 end
