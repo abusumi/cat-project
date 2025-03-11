@@ -1,30 +1,57 @@
-<h1 class="text-center text-3xl font-bold mb-10 text-gray-800">ようこそ！</h1>
-
-<div class="z-10 flex flex-row justify-center gap-6 w-auto px-5">
-  <%# 給与量の計算ボタン %>
-  <%= link_to new_feeding_calculation_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center w-auto transition-all duration-300 hover:scale-105 bg-blue-500 text-white" do %>
-    <div class="absolute inset-0 bg-gradient-to-t from-blue-600 to-blue-400 opacity-80 rounded-lg pointer-events-none"></div>
-    <div class="relative flex flex-col items-center space-y-4">
-      <span class="material-icons" style="font-size: 48px;">calculate</span>
-      <h2 class="text-xl font-semibold">給与量の計算</h2>
+<h1 class="text-center text-3xl font-bold mb-2 text-gray-800">ようこそ！</h1>
+<h1 class="text-center text-2xl font-bold mb-10 text-gray-800 font-zen">CatFoodMateは、愛猫の食事管理をもっと簡単に、もっと楽しくするためのアプリです</h1>
+<div class="text-center font-zen my-2">
+  <h2 class="text-2xl">愛猫の健康管理をもっと手軽に、もっと楽しく。<br>
+  CatFoodMateで、あなたの猫との毎日をもっと素敵なものにしませんか？
+  </h2>
+</div>
+<h1 class="text-center text-3xl font-bold mb-2 text-gray-800">ようこそ！</h1>
+<h1 class="text-center text-2xl font-bold mb-10 text-gray-800 font-zen">CatFoodMateは、愛猫の食事管理をもっと簡単に、もっと楽しくするためのアプリです</h1>
+<div class="text-center font-zen my-2">
+  <h2 class="text-2xl">愛猫の健康管理をもっと手軽に、もっと楽しく。<br>
+  CatFoodMateで、あなたの猫との毎日をもっと素敵なものにしませんか？
+  </h2>
+</div>
+<div class="z-10 flex flex-row justify-center gap-6 w-full px-5 mt-5">
+  <div class="flex flex-col items-center">
+    <%# 給与量の計算ボタン %>
+    <%= link_to new_feeding_calculation_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center flex-grow transition-all duration-300 hover:scale-105 bg-blue-500 text-white" do %>
+      <div class="absolute inset-0 bg-gradient-to-t from-blue-600 to-blue-400 opacity-80 rounded-lg pointer-events-none"></div>
+      <div class="relative flex flex-col items-center space-y-4">
+        <span class="material-icons" style="font-size: 48px;">calculate</span>
+        <h2 class="text-xl font-semibold">給与量の計算</h2>
+      </div>
+    <% end %>
+    <div class="arrow_box mt-8 p-4 rounded-lg w-full max-w-xs" style="border-color: #3b82f6;">
+      <p class="text-sm">愛猫の体重や年齢、活動レベルに基づいて、最適な1日の給与量を計算できます。健康管理の第一歩です！</p>
     </div>
-  <% end %>
+  </div>
 
-  <%# フード一覧ボタン %>
-  <%= link_to brands_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center w-auto transition-all duration-300 hover:scale-105 bg-green-500 text-white" do %>
-    <div class="absolute inset-0 bg-gradient-to-t from-green-600 to-green-400 opacity-80 rounded-lg pointer-events-none"></div>
-    <div class="relative flex flex-col items-center space-y-4">
-      <span class="material-icons" style="font-size: 48px;">reviews</span>
-      <h2 class="text-xl font-semibold">フードレビュー</h2>
+  <div class="flex flex-col items-center">
+    <%# フード一覧ボタン %>
+    <%= link_to brands_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center flex-grow transition-all duration-300 hover:scale-105 bg-green-500 text-white" do %>
+      <div class="absolute inset-0 bg-gradient-to-t from-green-600 to-green-400 opacity-80 rounded-lg pointer-events-none"></div>
+      <div class="relative flex flex-col items-center space-y-4">
+        <span class="material-icons" style="font-size: 48px;">reviews</span>
+        <h2 class="text-xl font-semibold">フードレビュー</h2>
+      </div>
+    <% end %>
+    <div class="arrow_box mt-8 p-4 rounded-lg w-full max-w-xs" style="border-color: #22c55e;">
+      <p class="text-sm">様々なキャットフードの評価やレビューを確認できます。愛猫に最適なフードを見つけましょう！</p>
     </div>
-  <% end %>
+  </div>
 
-  <%# みんなのペットボタン %>
-  <%= link_to cats_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center w-auto transition-all duration-300 hover:scale-105 bg-orange-500 text-white" do %>
-    <div class="absolute inset-0 bg-gradient-to-t from-orange-600 to-orange-400 opacity-80 rounded-lg pointer-events-none"></div>
-    <div class="relative flex flex-col items-center space-y-4">
-      <span class="material-icons" style="font-size: 48px;">pets</span>
-      <h2 class="text-xl font-semibold">みんなのペット</h2>
+  <div class="flex flex-col items-center">
+    <%# みんなのペットボタン %>
+    <%= link_to cats_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center flex-grow transition-all duration-300 hover:scale-105 bg-orange-500 text-white" do %>
+      <div class="absolute inset-0 bg-gradient-to-t from-orange-600 to-orange-400 opacity-80 rounded-lg pointer-events-none"></div>
+      <div class="relative flex flex-col items-center space-y-4">
+        <span class="material-icons" style="font-size: 48px;">pets</span>
+        <h2 class="text-xl font-semibold">みんなのペット</h2>
+      </div>
+    <% end %>
+    <div class="arrow_box mt-8 p-4 rounded-lg w-full max-w-xs" style="border-color: #f97316;">
+      <p class="text-sm">他のユーザーの愛猫を見たり、自分の猫を登録したりできます。猫好きのコミュニティに参加しましょう！</p>
     </div>
-  <% end %>
+  </div>
 </div>
