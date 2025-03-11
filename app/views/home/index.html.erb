@@ -1,11 +1,15 @@
-<h1 class="text-center text-3xl font-zen mb-2 text-gray-800">ようこそ！</h1>
-<h1 class="text-center font-zen text-2xl font-bold mb-10 text-gray-800 font-zen">CatFoodMateは、愛猫の食事管理をもっと簡単に、もっと楽しくするためのアプリです</h1>
-<div class="text-center my-2">
-  <h2 class="text-2xl font-zen">愛猫の健康管理をもっと手軽に、もっと楽しく。<br>
-  CatFoodMateで、あなたの猫との毎日をもっと素敵なものにしませんか？
-  </h2>
+<div class="relative h-[80vh] flex flex-col items-center justify-center bg-cover" style="background-image: url('/assets/top.png'); background-position: bottom;">
+  <h1 class="text-center text-3xl font-zen mb-4 mt-6 text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">ようこそ！</h1>
+  <h1 class="text-center font-zen text-2xl mb-10 text-white" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">CatFoodMateは、愛猫の食事管理をもっと簡単に、もっと楽しくするためのアプリです</h1>
+  <div class="text-center my-2">
+    <h2 class="text-2xl font-zen text-white drop-shadow-md my-10" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);">
+      愛猫の健康管理をもっと手軽に、もっと楽しく。<br>
+      CatFoodMateで、あなたの猫との毎日をもっと素敵なものにしませんか？<br>
+    </h2>
+  </div>
 </div>
-<div class="z-10 flex flex-row justify-center gap-6 w-full px-5 mt-5">
+
+<div class="z-10 flex flex-row justify-center gap-6 w-full px-5 mt-5 mb-2">
   <div class="flex flex-col items-center">
     <%# 給与量の計算ボタン %>
     <%= link_to new_feeding_calculation_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center flex-grow transition-all duration-300 hover:scale-105 bg-blue-500 text-white" do %>
