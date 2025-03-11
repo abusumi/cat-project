@@ -1,12 +1,19 @@
 <!-- 未ログイン時のフッター -->
-<footer id="footer" class="footer-bottom bg-light py-3" style="border-top: 1px solid #ddd; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);">
+<footer id="footer" class="footer-bottom bg-light py-3" style="background-color: #8b4513; border-top: 1px solid #ddd; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);">
   <div class="container">
-    <div class="d-flex justify-content-center">
+    <div class="flex justify-between">
       <!-- 均等配置のリンク -->
-      <div class="d-flex justify-content-around w-100 space-x-3" style="max-width: 600px;">
-        <%= link_to 'お問い合わせ', new_contact_path, class: 'footer-link text-center' %>
+      <div class="flex ml-2 text-white justify-around space-x-3" style="max-width: 600px;">
+        <%= link_to 'お問い合わせ', new_contact_path, class: 'footer-link text-center ' %>
         <%= link_to '利用規約', terms_of_service_path, class: 'footer-link text-center' %>
         <%= link_to 'プライバシーポリシー', privacy_policies_path, class: 'footer-link text-center' %>
+      </div>
+      
+      <!-- Twitter アイコンを右側に配置 -->
+      <div class="flex items-center">
+        <%= link_to "https://x.com/CatFoodMat45083", target: "_blank", class: "text-white" do %>
+          <i class="fa-brands fa-x-twitter text-3xl"></i>
+        <% end %>
       </div>
     </div>
   </div>
