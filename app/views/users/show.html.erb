@@ -2,7 +2,7 @@
   <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">ユーザーページ</h1>
 
   <!-- コンテンツを中央に配置 -->
-  <div class="w-full max-w-3xl rounded-lg p-6 mb-6 mx-auto text-center">
+  <div class="w-full rounded-lg p-6 mb-6 mx-auto text-center">
     <div class="bg-white w-[300px] p-5 text-center mx-auto">
       <%= image_tag @user.profile.attached? ? @user.profile : 'account.png', class: 'w-14 h-14 rounded-full object-cover border border-300 mx-auto' %>
       <div class="font-bold">

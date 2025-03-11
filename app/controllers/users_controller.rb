@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @cats = @user.cats
+    @cats = @user.cats.order(created_at: :desc)
     @calculation_result = current_user.feeding_calculations.includes(:main_food).order(created_at: :desc)
   end
 
