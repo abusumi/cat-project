@@ -23,7 +23,7 @@ class CatsController < ApplicationController
   def show
     @cat = Cat.find(params[:id])
     prepare_meta_tags(@cat)
-  
+
     # 一覧ページ (/cats) から遷移した場合のみ、session に保存
     if request.referer&.include?(cats_path)
       session[:return_to] = request.referer
@@ -36,7 +36,7 @@ class CatsController < ApplicationController
 
   def update
     @cat = Cat.find(params[:id])
-  
+
     if @cat.update(cat_params)
       redirect_to session.delete(:return_to) || user_path(@user), notice: "情報が更新されました"
     else
