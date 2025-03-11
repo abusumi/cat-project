@@ -2,7 +2,7 @@
   <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">ユーザーページ</h1>
 
   <!-- コンテンツを中央に配置 -->
-  <div class="w-full max-w-3xl rounded-lg p-6 mb-6 mx-auto text-center">
+  <div class="w-full rounded-lg p-6 mb-6 mx-auto text-center">
     <div class="bg-white w-[300px] p-5 text-center mx-auto">
       <%= image_tag @user.profile.attached? ? @user.profile : 'account.png', class: 'w-14 h-14 rounded-full object-cover border border-300 mx-auto' %>
       <div class="font-bold">
@@ -31,7 +31,7 @@
     <!-- 「猫を登録する」ボタンを中央揃え -->
     <% if @user == current_user %>
       <div class="mt-4 text-center pb-6 border-b border-gray-300">
-        <%= link_to '猫を登録する', new_user_cat_path(current_user), class: 'px-4 py-2 bg-blue-500 text-2xl text-white rounded-md hover:bg-blue-600 transition-colors duration-200' %>
+        <%= link_to 'ペットを登録する', new_user_cat_path(current_user), class: 'px-4 py-2 bg-blue-500 text-2xl text-white rounded-md hover:bg-blue-600 transition-colors duration-200' %>
       </div>
     <% end %>
   </div>

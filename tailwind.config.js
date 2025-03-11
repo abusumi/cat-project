@@ -8,18 +8,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#E17B34',
+        'custom-orange': '#e07f34',
       },
       fontFamily: {
-        'zen': ['Zen Kaku Gothic New', 'sans-serif'],
+        'zen': ['ZenMaruGothic', 'sans-serif'], // ここに追加
         'lilita': ['Lilita One', 'system-ui'],
       },
-    }, // 新しい設定を追加する場合はここに書く 
+    },
   },
   plugins: [
-    require("daisyui"), // プラグインの設定を追加
+    require("daisyui"),
   ],
   daisyui: {
-    darkTheme: false, // ダークモードの設定
+    darkTheme: false,
   },
 }

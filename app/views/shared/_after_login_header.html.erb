@@ -17,7 +17,9 @@
         <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
           <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
           <li><%= link_to 'ブックマーク一覧', bookmarks_foods_path %></li>
-          <li><%= link_to 'フード一覧', brands_path %></li>
+          <li><%= link_to '給与量の計算', new_feeding_calculation_path %></li>
+          <li><%= link_to 'フードレビュー', brands_path %></li>
+          <li><%= link_to 'みんなのペット', cats_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
         </ul>
       </div>
