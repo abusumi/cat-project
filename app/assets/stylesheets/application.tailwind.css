@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .arrow_box {
+    @apply relative bg-white border-4 border-custom-orange p-4 rounded-lg;
+  }
+
+  .arrow_box::after, .arrow_box::before {
+    @apply absolute border-transparent content-[''];
+  }
+
+  .arrow_box::after {
+    @apply border-b-white;
+    border-width: 30px;
+    margin-left: -30px;
+    bottom: 100%;
+    left: 50%;
+  }
+
+  .arrow_box::before {
+    @apply border-b-custom-orange;
+    border-width: 36px;
+    margin-left: -36px;
+    bottom: 100%;
+    left: 50%;
+  }
+}

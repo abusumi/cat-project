@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#E17B34',
+        'custom-orange': '#e07f34',
       },
       fontFamily: {
         'zen': ['ZenMaruGothic', 'sans-serif'], // ここに追加
