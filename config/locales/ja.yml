@@ -1,13 +1,16 @@
 ja:
   activerecord:
     models:
-      cat: "猫"
+      cat: "ペット"
+      user: "ユーザー"
     attributes:
       cat:
-        name: "名前"
+        name: "ペット"
         weight: "体重"
         cat_profile: "プロフィール"
-        cat_introduction: "紹介文"
+        cat_introduction: "ペットの紹介文"
+      user:
+        self_introduction: "自己紹介"
 
   helpers:
     submit:
@@ -17,13 +20,13 @@ ja:
 
   cats:
     index:
-      title: "猫一覧"
+      title: "みんなのペット一覧"
     new:
-      title: "猫を登録"
-      success: "猫が登録されました"
+      title: "ペットを登録"
+      success: "ペットが登録されました"
       failure: "登録に失敗しました"
     edit:
-      title: "猫の情報を編集"
+      title: "ペットの情報を編集"
       success: "情報が更新されました"
       failure: "更新に失敗しました"
     show:
@@ -32,11 +35,24 @@ ja:
       success: "削除しました"
       failure: "削除に失敗しました"
 
+  users:
+    show:
+      title: "%{name}のプロフィール"
+    edit:
+      title: "プロフィールを編集"
+      success: "ユーザー情報が更新されました"
+      failure: "更新に失敗しました"
+    update:
+      success: "ユーザー情報が更新されました"
+      failure: "更新に失敗しました"
+
   notices:
-    cat_created: "猫が登録されました"
+    cat_created: "ペットが登録されました"
     cat_updated: "情報が更新されました"
     cat_deleted: "削除しました"
     cat_delete_failed: "削除に失敗しました"
+    user_updated: "ユーザー情報が更新されました"
+    user_update_failed: "ユーザー情報の更新に失敗しました"
 
   errors:
     messages:
