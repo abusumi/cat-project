@@ -26,4 +26,17 @@ RSpec.describe 'UserSessions', type: :system do
       expect(current_path).to eq(new_user_session_path) # ログインページにとどまることを確認
     end
   end
+
+  describe 'ログアウト' do
+    it 'ユーザーはログアウトできること' do
+      # まずログインする
+      sign_in user
+
+      visit root_path # ホームページに移動
+      click_link 'Logout' # ログアウトリンクをクリック
+
+      expect(page).to have_content('Signed out successfully.') # ログアウト成功メッセージ
+      expect(current_path).to eq(root_path) # ホームページにリダイレクトされること
+    end
+  end
 end
