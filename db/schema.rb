@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_03_08_013849) do
+ActiveRecord::Schema[7.2].define(version: 2025_03_12_035508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,15 +106,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_08_013849) do
     t.index ["brand_id"], name: "index_foods_on_brand_id"
   end
 
-  create_table "helpfuls", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "review_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_helpfuls_on_review_id"
-    t.index ["user_id"], name: "index_helpfuls_on_user_id"
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.decimal "rating"
@@ -153,8 +144,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_08_013849) do
   add_foreign_key "feeding_calculations", "foods", column: "sub_food_id"
   add_foreign_key "feeding_calculations", "users"
   add_foreign_key "foods", "brands"
-  add_foreign_key "helpfuls", "reviews"
-  add_foreign_key "helpfuls", "users"
   add_foreign_key "reviews", "foods"
   add_foreign_key "reviews", "users"
 end
