@@ -38,6 +38,7 @@ gem "aws-sdk-s3", require: false
 
 gem "rspec-rails", "~> 7.0.0"
 gem "factory_bot_rails"
+gem "faker"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
