@@ -1,0 +1,43 @@
+ja:
+  activerecord:
+    models:
+      cat: "猫"
+    attributes:
+      cat:
+        name: "名前"
+        weight: "体重"
+        cat_profile: "プロフィール"
+        cat_introduction: "紹介文"
+
+  helpers:
+    submit:
+      create: "%{model}を登録"
+      update: "%{model}を更新"
+      delete: "%{model}を削除"
+
+  cats:
+    index:
+      title: "猫一覧"
+    new:
+      title: "猫を登録"
+      success: "猫が登録されました"
+      failure: "登録に失敗しました"
+    edit:
+      title: "猫の情報を編集"
+      success: "情報が更新されました"
+      failure: "更新に失敗しました"
+    show:
+      title: "%{name} の詳細"
+    destroy:
+      success: "削除しました"
+      failure: "削除に失敗しました"
+
+  notices:
+    cat_created: "猫が登録されました"
+    cat_updated: "情報が更新されました"
+    cat_deleted: "削除しました"
+    cat_delete_failed: "削除に失敗しました"
+
+  errors:
+    messages:
+      not_found: "対象のデータが見つかりません"
