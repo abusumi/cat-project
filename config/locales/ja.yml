@@ -3,14 +3,38 @@ ja:
     models:
       cat: "ペット"
       user: "ユーザー"
+      bookmark: "ブックマーク"
+      brand: "メーカー"
+      food: "フード"
+      feeding_calculation: "給与量計算機"
+      review: "レビュー"
+      contact: "お問い合わせ"
     attributes:
       cat:
-        name: "ペット"
+        name: "ペットの名前"
         weight: "体重"
         cat_profile: "プロフィール"
         cat_introduction: "ペットの紹介文"
       user:
         self_introduction: "自己紹介"
+      brand:
+        name: "ブランド名"
+      food:
+        name: "フード名"
+        external_url: "商品リンク"
+      feeding_calculation: 
+        main_food_amount: "メインフードの1日の給与量"
+        sub_food_amount: "サブフードの1日の給与量"
+        total_daily_calories: "必要エネルギー要求量(RER)"
+        weight: "体重"
+      review:
+        rating: "評価"
+        comment: "コメント"
+      contact:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        title: "件名"
+        messege: "お問い合わせ内容"
 
   helpers:
     submit:
@@ -37,7 +61,7 @@ ja:
 
   users:
     show:
-      title: "%{name}のプロフィール"
+      title: "ユーザーページ"
     edit:
       title: "プロフィールを編集"
       success: "ユーザー情報が更新されました"
@@ -45,6 +69,14 @@ ja:
     update:
       success: "ユーザー情報が更新されました"
       failure: "更新に失敗しました"
+
+  brands:
+    index:
+      title: "フード一覧"
+  
+  foods:
+    show:
+      title: "フード詳細ページ"
 
   notices:
     cat_created: "ペットが登録されました"
@@ -57,3 +89,4 @@ ja:
   errors:
     messages:
       not_found: "対象のデータが見つかりません"
+ 

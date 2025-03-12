@@ -20,7 +20,7 @@
 
 
 <div class="container mx-auto my-8 p-4" style="max-width: 100%;">
-  <h1 class="text-3xl text-center font-bold text-gray-800 mb-6">フード一覧</h1>
+  <h1 class="text-3xl text-center font-bold text-gray-800 mb-6"><%= t('.title') %></h1>
   <div class="grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
     <% @foods.each do |food| %>
       <%= render 'shared/food_card', food: food %>
