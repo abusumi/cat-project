@@ -1,11 +1,27 @@
 ,brand_id,name,calories_per_gram,seventy,coefficient,external_url
 ,1,インドア(室内で生活する猫専用フード 成猫用),3.74,77.85,0.71,https://shop.royalcanin.jp/%E3%82%A4%E3%83%B3%E3%83%89%E3%82%A2%EF%BC%88%E5%AE%A4%E5%86%85%E3%81%A7%E7%94%9F%E6%B4%BB%E3%81%99%E3%82%8B%E7%8C%AB%E5%B0%82%E7%94%A8%E3%83%95%E3%83%BC%E3%83%89-%E6%88%90%E7%8C%AB%E7%94%A8%EF%BC%89-2529
 ,1,インドア ロングヘアー(室内で生活する長毛の猫専用フード 成猫用),3.82,78.37,0.734,https://shop.royalcanin.jp/%E3%82%A4%E3%83%B3%E3%83%89%E3%82%A2-%E3%83%AD%E3%83%B3%E3%82%B0%E3%83%98%E3%82%A2%E3%83%BC%EF%BC%88%E5%AE%A4%E5%86%85%E3%81%A7%E7%94%9F%E6%B4%BB%E3%81%99%E3%82%8B%E9%95%B7%E6%AF%9B%E3%81%AE%E7%8C%AB%E5%B0%82%E7%94%A8%E3%83%95%E3%83%BC%E3%83%89-%E6%88%90%E7%8C%AB%E7%94%A8%EF%BC%89-2549
-,2,キャットスマックかつお味,3.3,99.19,0.647,https://www.smack.co.jp/cat_food/catsmack_2kg.html#food_01
-,2,キャットスマックまぐろ味,3.3,99.19,0.647,https://www.smack.co.jp/cat_food/catsmack_2kg.html#food_02
-,3,プロフェッショナーレ インドア,3.84,70.6,0.71,https://www.elmo-pet.com/food_lineup/Professionale/Indoor.html
 ,1,消化器サポートドライ,4.10,76.1,0.73,https://www.royalcanin.com/jp/cats/products/vet-products/gastrointestinal-3905
 ,1,ユリナリーS/Oドライ,3.87,78.13,0.709,https://www.royalcanin.com/jp/cats/products/vet-products/urinary-so-3901
 ,1,ユリナリーS/Oオルファクトリードライ,3.86,83.55,0.723,https://www.royalcanin.com/jp/cats/products/vet-products/urinary-so-olfactory-attraction-3944
+,1,ベンガル 成猫用,4.04,76.98,0.72,https://www.royalcanin.com/jp/cats/products/retail-products/----4370
+,1,ラグドール 成猫用,3.99,62.73,0.71,https://www.royalcanin.com/jp/cats/products/retail-products/--2515
+,1,ユリナリーケア,3.75,76.35,0.72,https://www.royalcanin.com/jp/cats/products/retail-products/--1800
+,1,ライト ウェイト ケア,3.35,78.58,0.70,https://www.royalcanin.com/jp/cats/products/retail-products/---2524
+,1,ヘアボール ケア,3.77,76.76,0.72,https://www.royalcanin.com/jp/cats/products/retail-products/--2534
+,1,センシブル,4.28,79.53,0.70,https://www.royalcanin.com/jp/cats/products/retail-products/--2521
+,1,デンタル ケア(歯垢・歯石が気になる成猫用),3.71,78.26,0.71,https://www.royalcanin.com/jp/cats/products/retail-products/--2532
+,1,プロテイン エクシジェント,3.91,76.13,0.72,https://www.royalcanin.com/jp/cats/products/retail-products/--2542
+,1,アロマ エクシジェント,3.87,78.19,0.71,https://www.royalcanin.com/jp/cats/products/retail-products/--2543
+,1,ヘアー&スキン ケア,4.15,77.74,0.71,https://www.royalcanin.com/jp/cats/products/retail-products/%26--2526/2
+,2,キャットスマックかつお味,3.30,83.29,0.78,https://www.smack.co.jp/cat_food/catsmack_2kg.html#food_01
+,2,キャットスマックまぐろ味,3.30,83.29,0.78,https://www.smack.co.jp/cat_food/catsmack_2kg.html#food_02
+,2,キャットスマック さけ&ささみ味,3.30,83.29,0.78,https://www.smack.co.jp/cat_food/catsmack_2kg.html#:~:text=%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B9%E3%83%9E%E3%83%83%E3%82%AF%E3%80%80%E3%81%95%E3%81%91%EF%BC%86%E3%81%95%E3%81%95%E3%81%BF%E5%91%B3%E3%80%802k%EF%BD%87
+,2,キャットスマック 真鯛味,3.30,83.29,0.78,"https://www.smack.co.jp/cat_food/catsmack_2kg.html#:~:text=%E5%BF%9C%E5%8B%9F%E5%88%B8%E4%BB%98%E3%81%8D-,%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B9%E3%83%9E%E3%83%83%E3%82%AF%E3%80%80%E7%9C%9F%E9%AF%9B%E5%91%B3%E3%80%802k%EF%BD%87,-%E7%8C%AB%E3%81%AE%E5%A4%A7%E5%A5%BD%E3%81%8D"
+,2,キャットスマック お魚ミックス,3.30,83.29,0.78,"https://www.smack.co.jp/cat_food/catsmack_2kg.html#:~:text=%E5%BF%9C%E5%8B%9F%E5%88%B8%E4%BB%98%E3%81%8D-,%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B9%E3%83%9E%E3%83%83%E3%82%AF%E3%80%80%E3%81%8A%E9%AD%9A%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9,-1.2k%EF%BD%87%20/%202k%EF%BD%87"
+,2,キャットスマック お肉ミックス,3.30,83.29,0.78,"https://www.smack.co.jp/cat_food/catsmack_2kg.html#:~:text=%E5%BF%9C%E5%8B%9F%E5%88%B8%E4%BB%98%E3%81%8D-,%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B9%E3%83%9E%E3%83%83%E3%82%AF%E3%80%80%E3%81%8A%E8%82%89%E3%83%9F%E3%83%83%E3%82%AF%E3%82%B9,-2k%EF%BD%87"
+,2,キャットスマック 皮膚被毛の健康維持,3.60,83.56,0.78,"https://www.smack.co.jp/cat_food/catsmack_2kg.html#:~:text=%E5%BF%9C%E5%8B%9F%E5%88%B8%E4%BB%98%E3%81%8D-,%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B9%E3%83%9E%E3%83%83%E3%82%AF%E3%80%80%E7%9A%AE%E8%86%9A%E8%A2%AB%E6%AF%9B%E3%81%AE%E5%81%A5%E5%BA%B7%E7%B6%AD%E6%8C%81,-1.8kg"
+,2,キャットスマック 毛玉吐き戻し軽減,3.40,83.27,0.78,"https://www.smack.co.jp/cat_food/catsmack_2kg.html#:~:text=%E5%BF%9C%E5%8B%9F%E5%88%B8%E4%BB%98%E3%81%8D-,%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88%E3%82%B9%E3%83%9E%E3%83%83%E3%82%AF%E3%80%80%E6%AF%9B%E7%8E%89%E5%90%90%E3%81%8D%E6%88%BB%E3%81%97%E8%BB%BD%E6%B8%9B,-1.8kg"
+,3,プロフェッショナーレ インドア,3.84,70.6,0.71,https://www.elmo-pet.com/food_lineup/Professionale/Indoor.html
 ,4,プリスクリプション・ダイエット c/dマルチケア チキンドライ,3.89,85.76,0.732,https://www.hills.co.jp/cat-food/pd-cd-multicare-feline-with-chicken-dry?lightboxfired=true
 ,4,プリスクリプション・ダイエット c/dマルチケア コンフォート チキンドライ,3.87,82.22,0.76,https://www.hills.co.jp/cat-food/pd-cd-multicare-feline-stress-dry
