@@ -14,21 +14,30 @@
   </div>
 
   <script>
-    function initializeStarRating() {
+    document.addEventListener("turbo:load", function() {
       const stars = document.querySelectorAll("#starRating .star");
+      const ratingInput = document.getElementById("rating");
+
       if (stars.length > 0) {
+        // デフォルト値（最低1）を設定
+        if (!ratingInput.value) {
+          ratingInput.value = 1;
+          stars[0].classList.add("text-yellow-400");
+        }
+
         stars.forEach((star) => {
           star.addEventListener("click", function() {
             const rating = this.getAttribute("data-rating");
+            ratingInput.value = rating;
             stars.forEach((s, index) => {
               s.classList.toggle("text-yellow-400", index < rating);
               s.classList.toggle("text-gray-300", index >= rating);
             });
-            document.getElementById("rating").value = rating;
           });
         });
       }
-    }
+    });
+
     document.addEventListener("turbo:load", initializeStarRating);
   </script>
 
