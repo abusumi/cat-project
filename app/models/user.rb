@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 1..10 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }, if: -> { password.present? }
-  validates :self_introduction, length: {in: 0..250}
+  validates :self_introduction, length: {in: 0..250}, allow_blank: true
   validates :uid, uniqueness: { scope: :provider }, allow_nil: true
 
   def bookmark(food)
