@@ -87,12 +87,12 @@ RSpec.describe User, type: :model do
 
   describe "クラスメソッドのテスト" do
     let(:auth) { OmniAuth.config.mock_auth[:google_oauth2] }
-    
+
     describe ".from_omniauth" do
       it "Google認証でユーザーを作成または取得する" do
         # OmniAuthのモックを設定した後
         auth = OmniAuth.config.mock_auth[:google_oauth2]
-        
+
         user = User.from_omniauth(auth)
         expect(user).to be_persisted
         expect(user.email).to eq(auth.info.email)
