@@ -8,7 +8,7 @@ class FeedingCalculationController < ApplicationController
 
   def calculate
     if params[:main_food_id].blank?
-      redirect_to root_path, alert: "メインフードを選択してください。" and return
+      redirect_to new_feeding_calculation_path, alert: "メインフードを選択してください。" and return
     end
 
     # フードと体重の取得
