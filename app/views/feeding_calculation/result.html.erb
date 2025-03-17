@@ -2,7 +2,7 @@
 
 <!-- 計算結果の表示 -->
 <div class="flex justify-center mb-12">
-  <div class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
+  <div class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full mx-2">
     <div class="space-y-4">
       <div class="flex flex-col">
         <span class="text-sm text-gray-600">メインフード メーカー名</span>
@@ -53,7 +53,7 @@
 </div>
 
 <!-- ボタンエリア -->
-<div class="flex flex-col items-center space-y-4 max-w-sm mx-auto mb-4">
+<div class="flex flex-col items-center space-y-4 px-2 max-w-sm mx-auto mb-4">
   <%= form_with url: save_feeding_calculation_index_path, method: :post, local: true, class: "w-full" do |f| %>
     <%= hidden_field_tag :main_brand_id, @result[:main_brand_id] %>
     <%= hidden_field_tag :main_food_id, @result[:main_food_id] %>
