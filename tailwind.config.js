@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         'custom-orange': '#e07f34',
         'default': '#8b4513',
+        'header': '#ffc553',
       },
       fontFamily: {
         'zen': ['ZenMaruGothic', 'sans-serif'], // ここに追加

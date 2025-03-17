@@ -1,30 +1,32 @@
 <!-- 未ログイン状態のヘッダー -->
-<header class="flex justify-between bg-amber-400 ">
-  <div class="navbar container mx-auto">
-    <!-- アプリタイトル -->
-    <div class="flex-1">
-      <%= link_to '/', class: 'btn btn-ghost normal-case text-xl' do %>
-        Cat Food Mate
-      <% end %>
-    </div>
+<div class="bg-header">
+  <header class="flex justify-between">
+    <div class="navbar">
+      <!-- アプリタイトル -->
+      <div class="flex-1">
+        <%= link_to '/', class: 'block' do %>
+          <%= image_tag 'logo.png', class:"transition duration-200 hover:opacity-40"%>
+        <% end %>
+      </div>
 
-    <!-- メニュー -->
-    <div class="flex-none">
-      <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-ghost">
-          メニュー
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </label>
-        <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li><%= link_to 'ログイン', new_user_session_path %></li>
-          <li><%= link_to '新規登録', new_user_registration_path %></li>
-          <li><%= link_to '給与量の計算', new_feeding_calculation_path %></li>
-          <li><%= link_to 'フードレビュー', brands_path %></li>
-          <li><%= link_to 'みんなのペット', cats_path %></li>
-        </ul>
+      <!-- メニュー -->
+      <div class="flex-none">
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost">
+            メニュー
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </label>
+          <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <li><%= link_to '新規登録', new_user_registration_path %></li>
+            <li><%= link_to '給与量の計算', new_feeding_calculation_path %></li>
+            <li><%= link_to 'フードレビュー', brands_path %></li>
+            <li><%= link_to 'みんなのペット', cats_path %></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
+</div>
