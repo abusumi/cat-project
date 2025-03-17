@@ -1,8 +1,8 @@
-<h2 class="text-center mb-6 text-2xl font-semibold">計算結果</h2>
+<h2 class="text-center mb-4 mt-2 text-2xl font-semibold text-default">計算結果</h2>
 
 <!-- 計算結果の表示 -->
 <div class="flex justify-center mb-12">
-  <div class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
+  <div class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full mx-2">
     <div class="space-y-4">
       <div class="flex flex-col">
         <span class="text-sm text-gray-600">メインフード メーカー名</span>
@@ -53,7 +53,7 @@
 </div>
 
 <!-- ボタンエリア -->
-<div class="flex flex-col items-center space-y-4 max-w-sm mx-auto mb-4">
+<div class="flex flex-col items-center space-y-4 px-2 max-w-sm mx-auto mb-4 text-default">
   <%= form_with url: save_feeding_calculation_index_path, method: :post, local: true, class: "w-full" do |f| %>
     <%= hidden_field_tag :main_brand_id, @result[:main_brand_id] %>
     <%= hidden_field_tag :main_food_id, @result[:main_food_id] %>
@@ -62,10 +62,10 @@
       <%= hidden_field_tag :sub_brand_id, @result[:sub_brand_id] %>
       <%= hidden_field_tag :sub_food_id, @result[:sub_food_id] %>
     <% end %>
-    <button type="submit" class="w-full py-3 bg-pink-200 text-orange-700 rounded-md text-lg font-semibold hover:bg-pink-300 transition">
+    <button type="submit" class="w-full py-3 bg-pink-200 rounded-md text-lg font-semibold hover:bg-pink-300 transition">
       マイページに保存する
     </button>
   <% end %>
 
-  <%= link_to "再計算する", new_feeding_calculation_path, class: "w-full py-3 bg-emerald-200 text-orange-700 rounded-md text-lg font-semibold text-center hover:bg-emerald-300 transition" %>
+  <%= link_to "再計算する", new_feeding_calculation_path, class: "w-full py-3 bg-emerald-200 rounded-md text-lg font-semibold text-center hover:bg-emerald-300 transition" %>
 </div>
