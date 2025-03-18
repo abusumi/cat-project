@@ -1,28 +1,63 @@
 <!-- 未ログイン状態のヘッダー -->
-<header class="relative z-50 flex justify-between bg-amber-400">
-  <div class="navbar container mx-auto">
-    <div class="flex-1">
-      <%= link_to '/', class: 'btn btn-ghost normal-case text-xl' do %>
-        Cat Food Mate
-      <% end %>
-    </div>
-    <div class="flex-none">
-      <div class="dropdown dropdown-end">
-        <label tabindex="0" class="btn btn-ghost">
-          メニュー
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </label>
-        <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
-          <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-          <li><%= link_to 'ブックマーク一覧', bookmarks_foods_path %></li>
-          <li><%= link_to '給与量の計算', new_feeding_calculation_path %></li>
-          <li><%= link_to 'フードレビュー', brands_path %></li>
-          <li><%= link_to 'みんなのペット', cats_path %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
-        </ul>
+<div class="bg-header">
+  <header class="flex justify-between">
+    <div class="navbar">
+      <!-- アプリタイトル -->
+      <div class="flex-1">
+        <%= link_to '/', class: 'block' do %>
+          <%= image_tag 'logo.png', class:"transition duration-200 hover:opacity-40"%>
+        <% end %>
+      </div>
+      <div class="flex-none">
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost">
+            メニュー
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </label>
+          <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <%= link_to user_path(current_user.id), class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">account_circle</span>
+                <span>ユーザーページ</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to bookmarks_foods_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">bookmarks</span>
+                <span>ブックマーク一覧</span>
+              <% end %>
+            </li>
+            <div class="divider my-1"></div>
+            <li>
+              <%= link_to new_feeding_calculation_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">calculate</span>
+                <span>給与量の計算</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to brands_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">reviews</span>
+                <span>フードレビュー</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to cats_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">pets</span>
+                <span>みんなのペット</span>
+              <% end %>
+            </li>
+            <div class="divider my-1"></div>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">logout</span>
+                <span>ログアウト</span>
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
+</div>
