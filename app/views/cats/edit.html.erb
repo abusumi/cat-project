@@ -1,4 +1,4 @@
-<h2 class="text-center mb-6 mt-2 text-3xl text-default">ペットプロフィール編集</h2>
+<h1 class="text-center mb-6 mt-2 text-3xl text-default">ペットプロフィール編集</h1>
 <div class="flex items-center justify-center">
   <div class="w-full max-w-2xl bg-white p-8 my-2 rounded-lg shadow-md">
     <%= form_with(model: @cat, url: user_cat_path(@user), method: :patch, data: { turbo: false }, class: "space-y-6") do |f| %>
