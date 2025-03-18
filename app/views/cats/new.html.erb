@@ -1,8 +1,6 @@
+<h2 class="text-center mb-6 mt-2 text-3xl text-default">ペットを登録</h2>
 <div class="flex items-center justify-center">
   <div class="w-full max-w-2xl bg-white p-8 my-2 rounded-lg shadow-md">
-    <div class="text-center mb-6">
-      <h1 class="text-3xl font-bold text-gray-800">ペットを登録する</h1>
-    </div>
     <%= form_with(model: @cat, url: user_cats_path(@user), method: :post, data: { turbo: false }, class: "space-y-6") do |f| %>
       <div>
         <%= f.label :name, class: "block text-lg font-medium text-gray-700" %>

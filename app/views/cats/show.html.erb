@@ -25,13 +25,13 @@
 
     <div class="mt-4 flex justify-between items-center">
       <%= link_to :back do %>
-        <span class="material-icons text-gray-800 hover:text-gray-500"style="font-size: 34px;">reply</span>
+        <span class="material-icons text-default hover:opacity-50"style="font-size: 34px;">reply</span>
       <% end %>
       <div class="text-gray-600">
         <% prepare_meta_tags @cat %>
         <% tweet_text = "#{@cat.name}ちゃんのプロフィールをチェック！\n#ペット\n#愛ペット\n" %>
         <% tweet_url = "https://twitter.com/intent/tweet?text=#{URI.encode_www_form_component(tweet_text)}&url=#{request.base_url}/users/#{@cat.user_id}/cats/#{@cat.id}" %>
-        <%= link_to tweet_url, target: '_blank', class: "flex items-center text-gray-800 hover:text-gray-500 transition-colors duration-200", data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+        <%= link_to tweet_url, target: '_blank', class: "flex items-center text-default hover:opacity-50 transition-colors duration-200", data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
           <i class="fa-brands fa-x-twitter text-3xl"></i>
         <% end %>
       </div>
