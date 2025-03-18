@@ -17,14 +17,44 @@
             </svg>
           </label>
           <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
-            <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-            <li><%= link_to 'ブックマーク一覧', bookmarks_foods_path %></li>
+            <li>
+              <%= link_to user_path(current_user.id), class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">account_circle</span>
+                <span>ユーザーページ</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to bookmarks_foods_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">bookmarks</span>
+                <span>ブックマーク一覧</span>
+              <% end %>
+            </li>
             <div class="divider my-1"></div>
-            <li><%= link_to '給与量の計算', new_feeding_calculation_path %></li>
-            <li><%= link_to 'フードレビュー', brands_path %></li>
-            <li><%= link_to 'みんなのペット', cats_path %></li>
+            <li>
+              <%= link_to new_feeding_calculation_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">calculate</span>
+                <span>給与量の計算</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to brands_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">reviews</span>
+                <span>フードレビュー</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to cats_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">pets</span>
+                <span>みんなのペット</span>
+              <% end %>
+            </li>
             <div class="divider my-1"></div>
-            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">logout</span>
+                <span>ログアウト</span>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>

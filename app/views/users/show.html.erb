@@ -1,10 +1,10 @@
 <div class="flex flex-col items-center">
-  <h1 class="text-3xl font-bold mb-6 mt-2 text-center text-gray-800">ユーザーページ</h1>
+  <h1 class="text-3xl font-bold mb-6 mt-2 text-center text-default">ユーザーページ</h1>
 
   <!-- コンテンツを中央に配置 -->
   <div class="w-full rounded-lg p-6 sm:mb-2 mx-auto text-center">
     <div class="bg-white w-[300px] p-5 mb-6 text-center mx-auto">
-      <%= image_tag @user.profile.attached? ? @user.profile : 'account.png', class: 'w-14 h-14 rounded-full object-cover border border-300 mx-auto' %>
+      <%= image_tag @user.profile.attached? ? @user.profile : 'account.png', class: 'w-14 h-14 rounded-full object-cover border border-default mx-auto' %>
       <div class="font-bold">
         <p class="text-2xl"><%= @user.name %></p>
       </div>
@@ -21,7 +21,7 @@
       <% end %>
     </div>
 
-    <p class="text-xl mb-4 my-4 font-semibold text-gray-700">登録済みペット</p>
+    <p class="text-xl mb-4 my-4 font-semibold text-default">登録済みペット</p>
 
     <!-- cat_card の表示 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -39,7 +39,7 @@
 
     <% if @user == current_user %>
       <% if @calculation_result.present? %>
-        <h2 class="text-2xl mb-4 font-semibold text-gray-800">計算結果一覧</h2>
+        <h2 class="text-2xl mb-4 font-semibold text-default">計算結果一覧</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
           <% @calculation_result.each do |calculation| %>
             <div class="bg-white content w-full mx-auto p-6 rounded-lg shadow-md">

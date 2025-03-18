@@ -19,12 +19,37 @@
             </svg>
           </label>
           <ul tabindex="0" class="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52">
-            <li><%= link_to 'ログイン', new_user_session_path %></li>
-            <li><%= link_to '新規登録', new_user_registration_path %></li>
+            <li>
+              <%= link_to new_user_session_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">login</span>
+                <span>ログイン</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">person_add</span>
+                <span>新規登録</span>
+              <% end %>
+            </li>
             <div class="divider my-1"></div>
-            <li><%= link_to '給与量の計算', new_feeding_calculation_path %></li>
-            <li><%= link_to 'フードレビュー', brands_path %></li>
-            <li><%= link_to 'みんなのペット', cats_path %></li>
+            <li>
+              <%= link_to new_feeding_calculation_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">calculate</span>
+                <span>給与量の計算</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to brands_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">reviews</span>
+                <span>フードレビュー</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to cats_path, class: "flex items-center space-x-2" do %>
+                <span class="material-icons text-default">pets</span>
+                <span>みんなのペット</span>
+              <% end %>
+            </li>
           </ul>
         </div>
       </div>
