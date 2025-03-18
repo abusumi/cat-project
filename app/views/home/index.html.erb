@@ -9,12 +9,12 @@
   </div>
 </div>
 
-<div class="z-10 flex flex-row justify-center gap-6 w-full px-5 mt-5 mb-2">
+<div class="flex flex-row justify-center gap-8 w-full px-5 mt-5 mb-2 grid sm:grid-cols-1 md:grid-cols-3">
   <div class="flex flex-col items-center">
     <%# 給与量の計算ボタン %>
-    <%= link_to new_feeding_calculation_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center flex-grow transition-all duration-300 hover:scale-105 bg-blue-500 text-white" do %>
+    <%= link_to new_feeding_calculation_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center h-[180px] w-full transition-all duration-300 hover:scale-105 bg-blue-500 text-white" do %>
       <div class="absolute inset-0 bg-gradient-to-t from-blue-600 to-blue-400 opacity-80 rounded-lg pointer-events-none"></div>
-      <div class="relative flex flex-col items-center space-y-4">
+      <div class="relative flex flex-col items-center justify-center h-full space-y-4">
         <span class="material-icons" style="font-size: 48px;">calculate</span>
         <h2 class="text-xl font-semibold">給与量の計算</h2>
       </div>
@@ -27,9 +27,9 @@
 
   <div class="flex flex-col items-center">
     <%# フード一覧ボタン %>
-    <%= link_to brands_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center flex-grow transition-all duration-300 hover:scale-105 bg-green-500 text-white" do %>
+    <%= link_to brands_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center h-[180px] w-full transition-all duration-300 hover:scale-105 bg-green-500 text-white" do %>
       <div class="absolute inset-0 bg-gradient-to-t from-green-600 to-green-400 opacity-80 rounded-lg pointer-events-none"></div>
-      <div class="relative flex flex-col items-center space-y-4">
+      <div class="relative flex flex-col items-center justify-center h-full space-y-4">
         <span class="material-icons" style="font-size: 48px;">reviews</span>
         <h2 class="text-xl font-semibold">フードレビュー</h2>
       </div>
@@ -42,9 +42,9 @@
 
   <div class="flex flex-col items-center">
     <%# みんなのペットボタン %>
-    <%= link_to cats_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center flex-grow transition-all duration-300 hover:scale-105 bg-orange-500 text-white" do %>
+    <%= link_to cats_path, class: "relative card shadow-xl rounded-lg p-6 flex flex-col items-center h-[180px] w-full transition-all duration-300 hover:scale-105 bg-orange-500 text-white" do %>
       <div class="absolute inset-0 bg-gradient-to-t from-orange-600 to-orange-400 opacity-80 rounded-lg pointer-events-none"></div>
-      <div class="relative flex flex-col items-center space-y-4">
+      <div class="relative flex flex-col items-center justify-center h-full space-y-4">
         <span class="material-icons" style="font-size: 48px;">pets</span>
         <h2 class="text-xl font-semibold">みんなのペット</h2>
       </div>
