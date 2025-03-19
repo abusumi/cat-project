@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @cats = @user.cats.order(created_at: :desc)
-    @calculation_result = current_user.feeding_calculations.includes(:main_food).order(created_at: :desc)
+    if current_user
+      @calculation_result = current_user.feeding_calculations.includes(:main_food).order(created_at: :desc)
+    else
+      @calculation_result = [] # 適当なデフォルト値を設定
+    end
   end
 
   def edit
