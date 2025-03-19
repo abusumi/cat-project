@@ -1,51 +1,63 @@
-<h1 class="text-center mb-6 mt-2 text-2xl text-default"><%= @food.name %>へのレビュー投稿</h1>
+<h1 class="text-center mb-6 mt-2 text-2xl text-default">
+  <%= @food.name %>
+  <span class="text-lg">のレビュー投稿</span>
+</h1>
 
-<%= form_with(model: [@food, @review], url: food_reviews_path(@food), data: { turbo: false }) do |f| %>
-  <div class="mb-4">
-    <label for="rating" class="block text-sm font-medium text-gray-700 mb-2">評価</label>
-    <div id="starRating" class="flex space-x-1">
-      <% 5.times do |i| %>
-        <svg data-rating="<%= i + 1 %>" class="star w-6 h-6 text-gray-300 cursor-pointer hover:text-yellow-400 transition duration-200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-        </svg>
+<div class="flex items-center justify-center">
+  <div class="w-full max-w-2xl items-center my-2 mx-2 bg-white p-6 rounded-lg shadow-md">
+
+    <%= form_with(model: [@food, @review], url: food_reviews_path(@food), data: { turbo: false }) do |f| %>
+      <div class="mb-4">
+        <label for="rating" class="block text-sm font-medium text-gray-700 mb-2">評価</label>
+        <div id="starRating" class="flex space-x-1">
+          <% 5.times do |i| %>
+            <svg data-rating="<%= i + 1 %>" class="star w-6 h-6 text-gray-300 cursor-pointer hover:text-yellow-400 transition duration-200" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+            </svg>
+          <% end %>
+        </div>
+        <%= f.hidden_field :rating, id: "rating" %>
+      </div>
+
+      <script>
+        document.addEventListener("turbo:load", function() {
+          const stars = document.querySelectorAll("#starRating .star");
+          const ratingInput = document.getElementById("rating");
+
+          if (stars.length > 0) {
+            // デフォルト値（最低1）を設定
+            if (!ratingInput.value) {
+              ratingInput.value = 1;
+              stars[0].classList.add("text-yellow-400");
+            }
+
+            stars.forEach((star) => {
+              star.addEventListener("click", function() {
+                const rating = this.getAttribute("data-rating");
+                ratingInput.value = rating;
+                stars.forEach((s, index) => {
+                  s.classList.toggle("text-yellow-400", index < rating);
+                  s.classList.toggle("text-gray-300", index >= rating);
+                });
+              });
+            });
+          }
+        });
+      </script>
+
+      <div class="mb-4">
+        <label for="comment" class="block text-sm font-medium text-gray-700 mb-2">コメント</label>
+        <%= f.text_area :comment, placeholder: "250文字まで", id: "comment", class: "block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
+      </div>
+
+      <div class="flex justify-center mb-10">
+        <%= f.submit "投稿", class: "items-center px-16 py-2 text-white bg-default rounded-md hover:opacity-50 transition cursor-pointer" %>
+      </div>
+    <% end %>
+    <div class="flex justify-start">
+      <%= link_to :back do %>
+        <span class="material-icons text-default hover:opacity-50"style="font-size: 40px;">reply</span>
       <% end %>
     </div>
-    <%= f.hidden_field :rating, id: "rating" %>
   </div>
-
-  <script>
-    document.addEventListener("turbo:load", function() {
-      const stars = document.querySelectorAll("#starRating .star");
-      const ratingInput = document.getElementById("rating");
-
-      if (stars.length > 0) {
-        // デフォルト値（最低1）を設定
-        if (!ratingInput.value) {
-          ratingInput.value = 1;
-          stars[0].classList.add("text-yellow-400");
-        }
-
-        stars.forEach((star) => {
-          star.addEventListener("click", function() {
-            const rating = this.getAttribute("data-rating");
-            ratingInput.value = rating;
-            stars.forEach((s, index) => {
-              s.classList.toggle("text-yellow-400", index < rating);
-              s.classList.toggle("text-gray-300", index >= rating);
-            });
-          });
-        });
-      }
-    });
-  </script>
-
-  <div class="mb-4">
-    <label for="comment" class="block text-sm font-medium text-gray-700 mb-2">コメント</label>
-    <%= f.text_area :comment, placeholder: "250文字まで", id: "comment", class: "block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" %>
-  </div>
-
-  <div class="flex space-x-4">
-    <%= f.submit "投稿", class: "px-4 py-2 font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 transition" %>
-    <%= link_to "フード詳細に戻る", food_path(@food.id), class: "px-4 py-2 font-semibold text-white bg-gray-500 rounded-md hover:bg-gray-600 transition" %>
-  </div>
-<% end %>
+</div>
