@@ -1,9 +1,10 @@
-<div class="food-card p-4 bg-white shadow-md rounded-lg text-center max-w-[16rem]">
-  <h3 class="text-lg font-semibold text-gray-800 break-words"><%= food.name %></h3>
-  <p class="text-sm text-gray-600 mt-2"><%= food.brand.name %></p>
-
-  <%# ★ ここに平均評価を表示 ★ %>
-  <div class="flex justify-center items-center mt-2">
+<div class="food-card p-4 bg-white shadow-md rounded-lg text-center flex flex-col h-full justify-center">
+  <div class="flex-1 justify-center">
+    <h3 class="text-lg font-semibold text-gray-800 break-words"><%= food.name %></h3>
+    <p class="text-sm text-gray-600 mt-2"><%= food.brand.name %></p>
+  </div>
+  
+  <div class="flex justify-center items-center mt-2 mb-4">
     <div class="flex">
       <% 5.times do |i| %>
         <% if i < food.average_rating.to_i %>
@@ -22,5 +23,7 @@
     <p class="ms-1 text-sm font-medium text-gray-500">5</p>
   </div>
 
-  <%= link_to '製品を表示', food_path(food), class: "inline-block mt-4 px-4 py-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600" %>
+  <div class="flex justify-center">
+    <%= link_to '詳細', food_path(food), class: "w-1/2 px-4 py-2 text-sm text-white bg-default rounded hover:opacity-50" %>
+  </div>
 </div>

@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       get :bookmarks
     end
 
-    resources :reviews, only: [ :index, :new, :create ]
+    resources :reviews, only: [ :new, :create ]
   end
 
   # resources :reviews, only: [ :index ]

@@ -1,3 +1,3 @@
 <%= link_to bookmark_path(current_user.bookmarks.find_by(food_id: food.id).id), id: "unbookmark-button-for-food-#{food.id}", data: { "turbo_method": :delete } do %>
-  <span class="material-icons">bookmark</span>
+  <span class="material-icons text-default"style="font-size: 40px;">bookmark</span>
 <% end %>

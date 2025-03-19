@@ -1,27 +1,26 @@
 <%= search_form_for @q, url: brands_path, method: :get, class: "mb-4", data: { turbo: false } do |f| %>
-  <div class="relative flex items-center gap-4 justify-center m-4" data-controller="autocomplete">
-    <%= f.label :search_by_name, "フードを検索", class: "block text-gray-700" %>
+  <div class="relative flex items-center gap-4 justify-center m-4" data-controller="autocomplete">    
     
-    <div class="relative w-[300px]">
+    <div class="relative w-2/3">
       <span class="material-icons absolute ml-1 left-4 top-1/2 -translate-y-1/2 text-gray-400">search</span>
       <%= f.search_field :search_by_name, 
-            class: "w-full py-3 px-4 pl-11 block border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400", 
+            class: "w-full py-3 px-4 pl-11 block border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-default focus:ring-default", 
             placeholder: "ブランド名または商品名を入力してください",
             data: { autocomplete_target: "input", action: "input->autocomplete#search" } %>
     </div>
 
     <!-- ここでmt-1を使って、候補一覧の位置を調整する -->
-    <ul class="absolute bg-white border border-gray-300 shadow-md rounded-md w-[300px] mt-1 max-h-60 overflow-auto hidden" 
-        data-autocomplete-target="results" style="width: 500px; top: 100%; "></ul>
+    <ul class="absolute bg-white border border-gray-300 shadow-md rounded-md w-2/3 mt-1 max-h-60 overflow-auto hidden" 
+        data-autocomplete-target="results" style="top: 100%; "></ul>
 
-    <%= f.submit "検索", class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600" %>
+    <%= f.submit "検索", class: "px-4 py-2 bg-default text-white rounded hover:opacity-50" %>
   </div>
 <% end %>
 
 
-<div class="container mx-auto my-8 p-4" style="max-width: 100%;">
+<div class="container mx-auto mb-8 p-4">
   <h1 class="text-center mb-6 mt-2 text-3xl text-default"><%= t('.title') %></h1>
-  <div class="grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     <% @foods.each do |food| %>
       <%= render 'shared/food_card', food: food %>
     <% end %>
