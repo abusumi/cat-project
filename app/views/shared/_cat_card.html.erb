@@ -1,18 +1,19 @@
 <div class="bg-white shadow-lg rounded-lg overflow-hidden">
   <div class="relative w-full h-48">
-    <%= image_tag(cat.cat_profile.attached? ? cat.cat_profile : 'pets.png', class: "w-full h-full object-cover") %>
+    <%= link_to user_cat_path(cat.user, cat) do %>
+      <%= image_tag(cat.cat_profile.attached? ? cat.cat_profile : 'pets.png', class: "w-full h-full transform hover:scale-105 duration-300 object-cover") %>
+    <% end %>
   </div>
   <div class="p-4 card-content w-full max-w-xs mx-auto">
-    <div class="flex items-lfet">
+    <div class="flex items-left">
       <% user = cat.user %>
       <%= link_to image_tag(user.profile.attached? ? user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-gray-300 mr-3'), user_path(user) %>
-      <%= link_to user.name, user_path(user), class: 'text-lg font-semibold text-gray-800' %>
+      <%= link_to user.name, user_path(user), class: 'text-lg text-gray-800' %>
     </div>
     <div class="text-left my-2">
-      <h2 class="text-xl font-semibold text-gray-900 truncate" title="<%= cat.name %>"><%= cat.name %></h2>
+      <h2 class="text-xl text-gray-900 truncate" title="<%= cat.name %>"><%= cat.name %></h2>
       <p class="text-l truncate" title="<%= cat.cat_introduction %>"><%= cat.cat_introduction %></p>
       <p class="text-sm text-gray-500">登録日: <%= cat.created_at.strftime('%Y-%m-%d') %></p>
     </div>
-    <%= link_to '詳細', user_cat_path(user, cat), class: 'btn btn-sm md:btn-md bg-green-500 hover:bg-green-600 hover:text-gray-500' %>
   </div>
 </div>
