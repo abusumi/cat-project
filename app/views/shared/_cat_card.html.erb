@@ -4,11 +4,11 @@
       <%= image_tag(cat.cat_profile.attached? ? cat.cat_profile : 'pets.png', class: "w-full h-full transform hover:scale-105 duration-300 object-cover") %>
     <% end %>
   </div>
-  <div class="p-4 card-content w-full max-w-xs mx-auto">
+  <div class="p-4 content w-full max-w-xs mx-auto">
     <div class="flex items-left">
       <% user = cat.user %>
-      <%= link_to image_tag(user.profile.attached? ? user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-gray-300 mr-3'), user_path(user) %>
-      <%= link_to user.name, user_path(user), class: 'text-lg text-gray-800' %>
+      <%= link_to image_tag(user.profile.attached? ? user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-default mr-3'), user_path(user) %>
+      <%= link_to user.name, user_path(user), class: 'text-lg text-gray-800 mt-2' %>
     </div>
     <div class="text-left my-2">
       <h2 class="text-xl text-gray-900 truncate" title="<%= cat.name %>"><%= cat.name %></h2>
