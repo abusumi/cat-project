@@ -22,12 +22,15 @@
     </div>
 
     <% if @user == current_user %>
-      <div class="mt-4 text-center pb-6">
-        <%= link_to 'ペットを登録する', new_user_cat_path(current_user), class: 'px-4 py-2 bg-blue-500 text-2xl text-white rounded-md hover:bg-blue-600 transition-colors duration-200' %>
+      <div class="flex justify-center mt-4 text-center pb-6">
+        <%= link_to new_user_cat_path(current_user), class: 'flex justify-center w-1/2 px-4 py-2 bg-default text-2xl text-white rounded-md hover:opacity-50' do %>
+          <span class="material-icons mt-1">add_circle</span>
+          <span class="ml-1">ペットを登録</span>
+        <% end %>
       </div>
     <% end %>
 
-    <h2 class="text-xl mb-4 my-4 text-default">登録済みペット</h2>
+    <h2 class="text-2xl mb-4 my-4 text-default">登録済みペット</h2>
 
     <!-- cat_card の表示 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -37,7 +40,7 @@
     <div class="border-t border-gray-300 mt-6">
       <% if @user == current_user %>
         <% if @calculation_result.present? %>
-          <h2 class="text-2xl mb-4 mt-2 font-semibold text-default">計算結果一覧</h2>
+          <h2 class="text-2xl mb-4 mt-2 text-default">計算結果一覧</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
             <% @calculation_result.each do |calculation| %>
               <div class="bg-white content w-full mx-auto p-6 rounded-lg shadow-md">
@@ -94,7 +97,7 @@
                   </div>
                   <div class="flex justify-center mt-4">
                     <%= button_to '削除', feeding_calculation_path(calculation.id), method: :delete, 
-                          class: 'bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-lg shadow' %>
+                          class: 'bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg shadow' %>
                   </div>
                 </div>
               </div>
