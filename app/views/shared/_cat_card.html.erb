@@ -8,7 +8,7 @@
     <div class="flex items-left">
       <% user = cat.user %>
       <%= link_to image_tag(user.profile.attached? ? user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-default mr-3'), user_path(user) %>
-      <%= link_to user.name, user_path(user), class: 'text-lg text-gray-800 mt-2' %>
+      <%= link_to user.name, user_path(user), class: 'text-lg text-gray-800 mt-2 hover:underline', style: 'text-decoration-color: #3B82F6;' %>
     </div>
     <div class="text-left my-2">
       <h2 class="text-xl text-gray-900 truncate" title="<%= cat.name %>"><%= cat.name %></h2>
