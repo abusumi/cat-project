@@ -2,11 +2,11 @@
   <h1 class="text-3xl mb-6 mt-2 text-center text-default">ユーザーページ</h1>
 
   <!-- コンテンツを中央に配置 -->
-  <div class="w-full rounded-lg p-2 sm:mb-2 mx-auto text-center">
+  <div class="w-full rounded-lg p-6 sm:mb-2 mx-auto text-center">
     <div class="bg-white w-[300px] p-5 mb-6 text-center mx-auto">
       <%= image_tag @user.profile.attached? ? @user.profile : 'account.png', class: 'w-14 h-14 rounded-full object-cover border border-default mx-auto' %>
-      <div class="text-4xl">
-        <p><%= @user.name %></p>
+      <div class="font-bold">
+        <p class="text-2xl"><%= @user.name %></p>
       </div>
       <div class="bg-gray-50 text-sm mb-5 p-5">
         <p><%= @user.self_introduction %></p>
@@ -21,94 +21,92 @@
       <% end %>
     </div>
 
-    <% if @user == current_user %>
-      <div class="flex justify-center mt-4 text-center pb-6">
-        <%= link_to new_user_cat_path(current_user), class: 'flex justify-center w-1/2 px-4 py-2 bg-default text-2xl text-white rounded-md hover:opacity-50' do %>
-          <span class="material-icons mt-1">add_circle</span>
-          <span class="ml-1">ペットを登録</span>
-        <% end %>
-      </div>
-    <% end %>
-
-    <h2 class="text-2xl mb-4 my-4 text-default">登録済みペット</h2>
+    <p class="text-xl mb-4 my-4 font-semibold text-default">登録済みペット</p>
 
     <!-- cat_card の表示 -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       <%= render partial: "shared/cat_card", collection: @cats, as: :cat %>
     </div>
 
-    <div class="border-t border-gray-300 mt-6">
-      <% if @user == current_user %>
-        <% if @calculation_result.present? %>
-          <h2 class="text-2xl mb-4 mt-2 text-default">計算結果一覧</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
-            <% @calculation_result.each do |calculation| %>
-              <div class="bg-white content w-full mx-auto p-6 rounded-lg shadow-md">
-                <div class="text-left space-y-1">
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">メインフード メーカー名</span>
-                    <strong class="text-lg text-gray-900"><%= calculation.main_brand.name %></strong>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">メインフード フード名</span>
-                    <strong class="text-lg text-gray-900"><%= calculation.main_food.name %></strong>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">サブフード メーカー名</span>
-                    <strong class="text-lg text-gray-900"><%= calculation.sub_brand&.name.presence || 'なし' %></strong>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">サブフード フード名</span>
-                    <strong class="text-lg text-gray-900"><%= calculation.sub_food&.name.presence || 'なし' %></strong>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">体重</span>
-                    <div class="flex items-center text-lg text-gray-900">
-                      <strong><%= calculation.weight %></strong>
-                      <span class="ml-1 text-sm text-gray-600">kg</span>
-                    </div>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">メインフードの1日の必要給与量</span>
-                    <div class="flex items-center text-lg text-gray-900">
-                      <strong><%= calculation.main_food_amount %></strong>
-                      <span class="ml-1 text-sm text-gray-600">g</span>
-                    </div>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">サブフードの1日の必要給与量</span>
-                    <div class="flex items-center text-lg text-gray-900">
-                      <strong><%= calculation.sub_food_amount %></strong>
-                      <span class="ml-1 text-sm text-gray-600">g</span>
-                    </div>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">必要エネルギー要求量 (RER)</span>
-                    <div class="flex items-center text-lg text-gray-900">
-                      <strong><%= calculation.total_daily_calories %></strong>
-                      <span class="ml-1 text-sm text-gray-600">kcal</span>
-                    </div>
-                  </div>
-                  <div class="flex flex-col">
-                    <span class="text-sm text-gray-600">作成日</span>
-                    <div class="flex items-center text-lg text-gray-900">
-                      <strong><%= calculation.created_at.strftime('%Y-%m-%d') %></strong>
-                    </div>
-                  </div>
-                  <div class="flex justify-center mt-4">
-                    <%= button_to '削除', feeding_calculation_path(calculation.id), method: :delete, 
-                          class: 'bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-lg shadow' %>
+    <!-- 「猫を登録する」ボタンを中央揃え -->
+    <% if @user == current_user %>
+      <div class="mt-4 text-center pb-6 border-b border-gray-300">
+        <%= link_to 'ペットを登録する', new_user_cat_path(current_user), class: 'px-4 py-2 bg-blue-500 text-2xl text-white rounded-md hover:bg-blue-600 transition-colors duration-200' %>
+      </div>
+    <% end %>
+  
+
+
+    <% if @user == current_user %>
+      <% if @calculation_result.present? %>
+        <h2 class="text-2xl mb-4 font-semibold text-default">計算結果一覧</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+          <% @calculation_result.each do |calculation| %>
+            <div class="bg-white content w-full mx-auto p-6 rounded-lg shadow-md">
+              <div class="text-left space-y-1">
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">メインフード メーカー名</span>
+                  <strong class="text-lg text-gray-900"><%= calculation.main_brand.name %></strong>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">メインフード フード名</span>
+                  <strong class="text-lg text-gray-900"><%= calculation.main_food.name %></strong>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">サブフード メーカー名</span>
+                  <strong class="text-lg text-gray-900"><%= calculation.sub_brand&.name.presence || 'なし' %></strong>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">サブフード フード名</span>
+                  <strong class="text-lg text-gray-900"><%= calculation.sub_food&.name.presence || 'なし' %></strong>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">体重</span>
+                  <div class="flex items-center text-lg text-gray-900">
+                    <strong><%= calculation.weight %></strong>
+                    <span class="ml-1 text-sm text-gray-600">kg</span>
                   </div>
                 </div>
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">メインフードの1日の必要給与量</span>
+                  <div class="flex items-center text-lg text-gray-900">
+                    <strong><%= calculation.main_food_amount %></strong>
+                    <span class="ml-1 text-sm text-gray-600">g</span>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">サブフードの1日の必要給与量</span>
+                  <div class="flex items-center text-lg text-gray-900">
+                    <strong><%= calculation.sub_food_amount %></strong>
+                    <span class="ml-1 text-sm text-gray-600">g</span>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">必要エネルギー要求量 (RER)</span>
+                  <div class="flex items-center text-lg text-gray-900">
+                    <strong><%= calculation.total_daily_calories %></strong>
+                    <span class="ml-1 text-sm text-gray-600">kcal</span>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-sm text-gray-600">作成日</span>
+                  <div class="flex items-center text-lg text-gray-900">
+                    <strong><%= calculation.created_at.strftime('%Y-%m-%d') %></strong>
+                  </div>
+                </div>
+                <div class="flex justify-center mt-4">
+                  <%= button_to '削除', feeding_calculation_path(calculation.id), method: :delete, 
+                        class: 'bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-6 rounded-lg shadow' %>
+                </div>
               </div>
-            <% end %>
-          </div>
-        <% else %>
-          <p class="bg-white shadow-md text-red-500 p-4 rounded-md mt-4 w-full max-w-2xl mx-auto text-center">
-            計算結果はまだありません。
-          </p>
-        <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="bg-white shadow-md text-red-500 p-4 rounded-md mt-4 w-full max-w-3xl mx-auto text-center">
+          計算結果はまだありません。
+        </p>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
