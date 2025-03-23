@@ -1,16 +1,16 @@
-<div class="container mx-auto p-6">
-  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
-    <div class="relative w-full h-48 mb-4">
-      <%= image_tag(@cat.cat_profile.attached? ? @cat.cat_profile : 'pets.png', class: "w-full h-full object-cover rounded-lg shadow-md") %>
+<div class="flex items-center justify-center px-2">
+  <div class="w-full max-w-2xl items-center my-2 bg-white p-6 rounded-lg shadow-md">
+    <div class="relative w-full mb-4 flex justify-center">
+      <%= image_tag(@cat.cat_profile.attached? ? @cat.cat_profile : 'pets.png', class: @cat.cat_profile.attached? ? "w-full h-full object-cover rounded-lg shadow-md" : "w-full h-60 object-cover rounded-lg shadow-md") %>
     </div>
 
     <div class="flex items-center">
-      <%= link_to image_tag(@cat.user.profile.attached? ? @cat.user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-gray-300 mr-3'), user_path(@cat.user) %>
-      <%= link_to @cat.user.name, user_path(@cat.user), class: 'text-lg font-semibold text-gray-800 break-words' %>
+      <%= link_to image_tag(@cat.user.profile.attached? ? @cat.user.profile : 'account.png', class: 'w-10 h-10 rounded-full object-cover border border-default mr-3'), user_path(@cat.user) %>
+      <%= link_to @cat.user.name, user_path(@cat.user), class: 'text-lg text-gray-800 break-words' %>
     </div>
-    <h2 class="text-2xl font-bold mb-4 t text-gray-800 break-words"><%= @cat.name %></h2>
+    <h2 class="text-2xl mb-4 t text-gray-800 break-words"><%= @cat.name %></h2>
     <p class="text-gray-700 mb-4 break-words"><%= @cat.cat_introduction %></p>
-    <p class="text-gray-700 mb-4">体重: <span class="font-semibold"><%= @cat.weight %> kg</span></p>
+    <p class="text-gray-700 mb-4">体重: <%= @cat.weight %> kg</span></p>
     <p class="text-sm text-gray-500">登録日: <%= @cat.created_at.strftime('%Y-%m-%d') %></p>
     <% if @cat.user == current_user %>
       <div class="mt-4 flex justify-end space-x-4">
@@ -32,6 +32,7 @@
         <% tweet_text = "#{@cat.name}ちゃんのプロフィールをチェック！\n#ペット\n#愛ペット\n" %>
         <% tweet_url = "https://twitter.com/intent/tweet?text=#{URI.encode_www_form_component(tweet_text)}&url=#{request.base_url}/users/#{@cat.user_id}/cats/#{@cat.id}" %>
         <%= link_to tweet_url, target: '_blank', class: "flex items-center text-default hover:opacity-50 transition-colors duration-200", data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+          <span class="material-icons">share</span>
           <i class="fa-brands fa-x-twitter text-3xl"></i>
         <% end %>
       </div>
