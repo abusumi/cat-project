@@ -1,16 +1,12 @@
-<h1 class="text-center mb-6 mt-2 text-2xl text-default">ブックマーク一覧</h1>
-
+<div class="container mx-auto mb-8">
+  <h1 class="text-center mb-6 mt-2 text-3xl text-default">ブックマーク一覧</h1>
   <% if @bookmark_foods.present? %>
-    <ul>
-      <div class="grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
-        <% @bookmark_foods.each do |food| %>
-          <li>
-            <%= render 'shared/food_card', food: food %>
-          </li>
-        <% end %>
-      </div>
-    </ul>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <% @bookmark_foods.each do |food| %>
+        <%= render 'shared/food_card', food: food %>
+      <% end %>
+    </div>
   <% else %>
     <p class="text-center">ブックマークされたフードはありません。</p>
   <% end %>
-
+</div>
