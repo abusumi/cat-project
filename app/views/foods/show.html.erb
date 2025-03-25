@@ -15,6 +15,10 @@
 
     <p class="text-lg text-gray-700 text-center"><%= @food.brand.name %></p>
 
+    <% unless user_signed_in? %>
+      <p class="text-red-500 text-sm text-center mt-4">ログインユーザーはブックマーク、レビュー投稿できます</p>
+    <% end %>
+
 
     <div class="flex justify-between my-6">
       <div class="flex-1 flex justify-center">
