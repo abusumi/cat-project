@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
-  before_action :set_cat, only: [:edit, :update, :destroy]
-  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :set_cat, only: [ :edit, :update, :destroy ]
+  before_action :authorize_user, only: [ :edit, :update, :destroy ]
 
   helper_method :prepare_meta_tags
 
@@ -55,7 +55,7 @@ class CatsController < ApplicationController
 
   private
 
-  
+
 
   def set_cat
     @cat = Cat.find(params[:id])

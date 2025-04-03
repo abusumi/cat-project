@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_user, only: [:edit, :update]
+  before_action :authorize_user, only: [ :edit, :update ]
   def show
     @user = User.find(params[:id])
     @cats = @user.cats.order(created_at: :desc)
