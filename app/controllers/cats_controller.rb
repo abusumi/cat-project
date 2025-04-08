@@ -1,13 +1,16 @@
 class CatsController < ApplicationController
-  before_action :set_user
-  before_action :set_user, except: [ :index ]
+  before_action :set_cat, only: [ :edit, :update, :destroy ]
+  before_action :authorize_user, only: [ :edit, :update, :destroy ]
+
   helper_method :prepare_meta_tags
 
   def new
+    @user = User.find(params[:user_id])
     @cat = @user.cats.build
   end
 
   def create
+    @user = User.find(params[:user_id])
     @cat = @user.cats.build(cat_params)
     if @cat.save
       redirect_to cats_path, notice: "猫が登録されました"
@@ -24,19 +27,17 @@ class CatsController < ApplicationController
     @cat = Cat.find(params[:id])
     prepare_meta_tags(@cat)
 
-    # 一覧ページ (/cats) から遷移した場合のみ、session に保存
     if request.referer&.include?(cats_path)
       session[:return_to] = request.referer
     end
   end
 
   def edit
-    @cat = Cat.find(params[:id])
+    @user = User.find(params[:user_id])
+    # 編集処理
   end
 
   def update
-    @cat = Cat.find(params[:id])
-
     if @cat.update(cat_params)
       redirect_to cats_path, notice: "情報が更新されました"
     else
@@ -46,17 +47,25 @@ class CatsController < ApplicationController
   end
 
   def destroy
-    @cat = Cat.find(params[:id]) # まずは@catを見つける
-    @user = @cat.user # @catから@userを取得する
-    @cat.destroy! # その後に削除する
+    @user = @cat.user # 作成者の取得
+    @cat.destroy!
     flash[:notice] = "削除しました"
     redirect_to user_path(@user)
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
+
+
+  def set_cat
+    @cat = Cat.find(params[:id])
+  end
+
+  def authorize_user
+    # 作成者でない場合、アクセス拒否
+    unless @cat.user == current_user
+      redirect_to cats_path, alert: "権限がありません"
+    end
   end
 
   def cat_params

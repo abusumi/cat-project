@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize_user, only: [ :edit, :update ]
   def show
     @user = User.find(params[:id])
     @cats = @user.cats.order(created_at: :desc)
@@ -28,5 +29,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :self_introduction, :profile)
+  end
+
+  def authorize_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path, alert: "権限がありません"
+    end
   end
 end
