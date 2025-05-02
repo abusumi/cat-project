@@ -6,13 +6,12 @@ RSpec.describe "Bookmarks", type: :system do
   let!(:food) { create(:food) }
 
   before do
-    driven_by(:rack_test) # JS不要なら rack_test でOK。JS使うなら selenium_chrome_headless
+    driven_by(:rack_test)
   end
 
   describe "ブックマーク作成" do
     context "ログイン済みの場合" do
       it "ブックマークを作成し、リダイレクトされる" do
-        # ログイン処理
         visit new_user_session_path
         fill_in 'user_email', with: user.email
         fill_in 'password_field', with: user.password
@@ -57,6 +56,5 @@ RSpec.describe "Bookmarks", type: :system do
       visit bookmarks_foods_path
       expect(page).to have_content(food.name)
     end
-
   end
 end
