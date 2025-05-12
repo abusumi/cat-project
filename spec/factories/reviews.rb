@@ -4,4 +4,9 @@ FactoryBot.define do
     association :user
     association :food
   end
+  trait :with_reviews do
+    after(:create) do |food|
+      create_list(:review, 2, food: food)
+    end
+  end
 end
