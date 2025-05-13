@@ -16,14 +16,14 @@ RSpec.describe "Cats", type: :system do
     click_button 'ログイン'
   end
 
-  describe "猫の一覧ページ" do
-    it "一覧に猫の名前が表示される" do
+  describe "ペットの一覧ページ" do
+    it "一覧にペットの名前が表示される" do
       visit cats_path
       expect(page).to have_content(cat.name)
     end
   end
 
-  describe "猫の詳細ページ" do
+  describe "ペットの詳細ページ" do
     it "詳細情報が表示される" do
       visit user_cat_path(user_id: cat.user_id, id: cat.id)
       expect(page).to have_content(cat.name)
@@ -31,8 +31,8 @@ RSpec.describe "Cats", type: :system do
     end
   end
 
-  describe "猫の登録" do
-    it "ログインしたユーザーが猫を登録できる" do
+  describe "ペットの登録" do
+    it "ログインしたユーザーがペットを登録できる" do
       login(user)
 
       visit new_user_cat_path(user)
@@ -47,8 +47,8 @@ RSpec.describe "Cats", type: :system do
     end
   end
 
-  describe "猫の編集" do
-    it "作成者が猫の情報を編集できる" do
+  describe "ペットの編集" do
+    it "作成者がペットの情報を編集できる" do
       login(user)
 
       visit edit_user_cat_path(user, cat)
