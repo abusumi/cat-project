@@ -1,4 +1,3 @@
-# spec/system/bookmarks_spec.rb
 require 'rails_helper'
 
 RSpec.describe "Bookmarks", type: :system do
