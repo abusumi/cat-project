@@ -36,7 +36,7 @@ gem "mini_magick"
 
 gem "aws-sdk-s3", require: false
 
-gem "rspec-rails", "~> 7.0.0"
+gem "rspec-rails", "~> 8.0.1"
 gem "factory_bot_rails"
 gem "faker"
 
