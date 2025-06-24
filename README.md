@@ -2,7 +2,7 @@
 ![ogp](https://github.com/user-attachments/assets/e6fcf627-2889-4b78-a3f4-a96dd162a5e7)
 
 # ■目次
-- [サービス概要](https://github.com/abusumi/cat-project/edit/main/README.md#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E6%A6%82%E8%A6%81)
+- [サービス概要](https://github.com/abusumi/cat-project?tab=readme-ov-file#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E6%A6%82%E8%A6%81)
 - [サービスURL](https://github.com/abusumi/cat-project/edit/main/README.md#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E6%A6%82%E8%A6%81)
 - [サービス開発の背景](https://github.com/abusumi/cat-project/edit/main/README.md#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E6%A6%82%E8%A6%81)
 - [機能紹介](https://github.com/abusumi/cat-project/edit/main/README.md#%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E6%A6%82%E8%A6%81)
